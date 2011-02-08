@@ -1,0 +1,123 @@
+\documentclass[11pt,english]{article}
+
+% Set page margins correctly
+\usepackage{geometry}
+\usepackage{url}
+\geometry{letterpaper,top=1.0in,left=1.0in,bottom=1.0in,top=1.0in,headsep=6pt,footskip=18pt}
+
+\usepackage{lscape}
+\usepackage[square,comma,numbers,sort&compress]{natbib}
+
+% Use fancy header style
+\usepackage{fancyhdr}
+\pagestyle{empty}
+\renewcommand{\headrulewidth}{0.75pt}
+\renewcommand{\footrulewidth}{0.75pt}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{float}
+\floatstyle{plain}
+\newfloat{command}{thp}{lop}
+\floatname{command}{Command}
+\doublespacing
+\usepackage{boxedminipage}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts}
+\usepackage{babel,verbatim}
+\usepackage{enumerate}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{sectsty}
+\usepackage[compact]{titlesec}
+\usepackage[usenames]{color}
+\usepackage{ulem}
+\usepackage{multirow,booktabs,ctable,array}
+\graphicspath{{./Figures/}
+                          }
+
+%\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+
+\long\def\symbolfootnote[#1]#2{\begingroup%
+\def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup}
+
+    \usepackage{color}
+
+    \definecolor{listcomment}{rgb}{0.0,0.5,0.0}
+    \definecolor{listkeyword}{rgb}{0.0,0.0,0.5}
+    \definecolor{listnumbers}{gray}{0.65}
+    \definecolor{listlightgray}{gray}{0.955}
+    \definecolor{listwhite}{gray}{1.0}
+
+\begin{document}
+\normalem
+
+\vspace*{5cm}
+
+\begin{center}
+{\Large \bf Multivariate EM Segmentation Project} \\
+\vspace*{0.5cm}
+{\normalsize Ben Kandel, Pengfei Zheng and Brian B. Avants$^1$} \\
+\begin{singlespace} 
+{\scriptsize  $^1$ Penn Image Computing and Science Laboratory, University of Pennsylvania, Philadelphia, Pennsylvania,  USA.}
+\end{singlespace}
+\end{center}
+
+\vfill
+
+\begin{singlespace} 
+\scriptsize
+\flushleft
+%\line(1, 0){250} \\
+{\bf MVSeg}\\
+Corresponding author: \\
+Brian B. Avants\\
+3600 Market Street, Suite 370\\
+Philadelphia, PA  19104\\
+avants@picsl.upenn.edu\\
+\end{singlespace} 
+\clearpage
+\begin{abstract} 
+Neuroanatomical coordinate systems are essential for the
+interpretation of structural and functional imaging studies.
+However, manual delineation of the neuroanatomical complex is time
+consuming and prone to random performance variability.  This
+work describes an open source, image-based approach to white matter parcellation which uses training data to propagate
+structural labelings to individual images.  The Bayesian formulation of the segmentation problem is 
+solved using the Expectation Maximization (EM) algorithm with a
+variety of different multivariate distance metrics.  We evaluate our
+ability to segment DTI data based on comparison with
+registration-based approaches and biological validity of results. 
+\end{abstract}
+
+\section{Introduction}
+The Expectation-Maximization (EM) framework \citep{Dempster1977} is a
+powerful optimization method for parameter estimation.
+
+\section{Data}
+
+\section{Methods}
+
+\section{Results}
+
+\section{Discussion}
+
+\paragraph{Information Sharing Statement}
+{\color{blue}{Atropos software is available in ANTs
+    \url{http://www.picsl.upenn.edu/ANTs} 
+which depends on ITK \url{http://www.itk.org/Wiki/ITK/Git/Download}.
+The data used in this work is available in the ANTs software
+repository, BrainWeb 
+\url{http://mouldy.bic.mni.mcgill.ca/BrainWeb/} and at \url{www.brain-development.org}.
+We employed itk-SNAP for visualization \url{www.itksnap.org}.}}
+
+\paragraph{Acknowledgments}
+{This work was supported in part by NIH (AG17586, AG15116, NS44266, and
+NS53488).}
+
+\newpage
+
+\bibliographystyle{plain}
+\bibliography{MVSeg} 
+\end{document}
