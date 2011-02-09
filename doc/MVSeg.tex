@@ -80,37 +80,97 @@ avants@picsl.upenn.edu\\
 \clearpage
 \begin{abstract} 
 Neuroanatomical coordinate systems are essential for the
-interpretation of structural and functional imaging studies.
-However, manual delineation of the neuroanatomical complex is time
-consuming and prone to random performance variability.  This
-work describes an open source, image-based approach to white matter parcellation which uses training data to propagate
-structural labelings to individual images.  The Bayesian formulation of the segmentation problem is 
+interpretation of structural and functional imaging studies.  However,
+manual delineation of the neuroanatomical complex is time consuming
+and prone to random performance variability.  This work describes an
+open source, image-based approach to white matter parcellation which
+uses training data to propagate structural labelings to individual
+images.  The Bayesian formulation of the segmentation problem is
 solved using the Expectation Maximization (EM) algorithm with a
 variety of different multivariate distance metrics.  We evaluate our
 ability to segment DTI data based on comparison with
-registration-based approaches and biological validity of results. 
+registration-based approaches and biological validity of results.
 \end{abstract}
 
 \section{Introduction}
 The Expectation-Maximization (EM) framework \citep{Dempster1977} is a
-powerful optimization method for parameter estimation.
+powerful optimization method for parameter estimation.  This project
+will investigate EM with application to diffusion tensor imaging and
+will test our ability to segment major white matter tracts in
+different subjects.   
 
 \section{Data}
+\subsection{DTI}
+We can start small with a couple of interesting datasets. 
 
-\section{Methods}
+\noindent $I$ High-resolution human DT atlas in nifti format: \url{http://www.nitrc.org/frs/?group_id=432}
+
+\noindent $J$ A second human DT atlas
+\url{http://www.nitrc.org/projects/dtitk} which also has labels that
+may be used to guide our parcellation of the white matter into major
+tracts.
+
+\noindent $K$ A similar atlas for macaque \url{http://www.nitrc.org/projects/rmdtitemplate}
+
+Segmenting these templates into similar regions will let us quantify
+differences in white matter due to aging in humans ($I$ vs $J$) and
+between humans and macaques ($I$ and $J$ vs $K$).
+
+Once we establish a working knowledge of DTI segmentation, we can
+evaluate reproducibility of our methods on the Kirby dataset
+\url{http://www.nitrc.org/projects/multimodal/}.  This unique
+collection of images has repeat imaging on the same subject within a
+week.  Thus, our segmentation tools should provide repeatable
+measurements of volume or tracts across all subjects.  Once
+repeatability is established, we can apply the segmentation approach
+to other datasets where investigating population differences is of
+interest.
+
+\subsection{Neonate T1 and T2} There is also an interesting neonatal
+dataset for which there is some multivariate data (T1 and T2).  The
+goal with the neonatal segmentation is to increase repeatability
+between automated and manual volume measurements.  We do fairly well
+already but could improve results with some additional work on, for
+instance, distance metrics and/or partial volume estimation.
+
+\section{Methods} Our goal will be to provide reproducible
+measurements derived from DTI segmentation.
+\begin{description}
+\item[RBG:] The principal direction of the tensor can be visualized in
+  RGB space.  Some segmentation methods rely on this feature 
+  modulated by the FA.
+\item[FA:] Fractional anisotropy derived from the tensor.  This is
+  equal to the variance of the eigenvalues of the tensor matrix.  It
+  is the most common measure used in DTI studies, along with
+  tractography. 
+\item[Tractography:] White matter tracts provide a physical connection
+  between and within cortical regions.  At the coarse scale of DTI, we mostly
+  look at connections between cortical regions.  A simple way to
+  define a tract from DTI is to follow the principal eigenvector until
+  some stopping criterion based on curvature or FA is reached. 
+\end{description}
+An EM segmentation method can use any of these features.  One project
+that may be similar to our own is here
+\url{http://www.nitrc.org/projects/dots} though there is no clear
+reference other than the website.  Prior DT segmentation work is here
+\citep{Lenglet2005} and here \citep{Awate2007}.  Classic work on
+partial volume estimation \citep{Santago1993,Shattuck2001}.
+
+
+We can also explore the effect of simulated and/or deterministic
+annealing which is a hidden feature of Atropos. 
 
 \section{Results}
 
 \section{Discussion}
 
 \paragraph{Information Sharing Statement}
-{\color{blue}{Atropos software is available in ANTs
-    \url{http://www.picsl.upenn.edu/ANTs} 
-which depends on ITK \url{http://www.itk.org/Wiki/ITK/Git/Download}.
-The data used in this work is available in the ANTs software
-repository, BrainWeb 
-\url{http://mouldy.bic.mni.mcgill.ca/BrainWeb/} and at \url{www.brain-development.org}.
-We employed itk-SNAP for visualization \url{www.itksnap.org}.}}
+{Atropos software is available in ANTs
+    {\color{blue}{\url{http://www.picsl.upenn.edu/ANTs}}}
+which depends on ITK {\color{blue}{\url{http://www.itk.org/Wiki/ITK/Git/Download}}}.
+BrainWeb provides good evaluation data
+{\color{blue}{\url{http://mouldy.bic.mni.mcgill.ca/BrainWeb/}}}.
+ITK-SNAP is useful for scalar and RGB visualization {\color{blue}{\url{www.itksnap.org}}}.
 
 \paragraph{Acknowledgments}
 {This work was supported in part by NIH (AG17586, AG15116, NS44266, and

@@ -1,1 +1,3 @@
 This project will explore the effect of different distance metrics in EM segmentation of DTI in the human brain.  We will use the Atropos implementation of EM segmentation.
+
+See the doc directory for details.

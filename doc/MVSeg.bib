@@ -11,3 +11,139 @@
   timestamp = {2010.08.29}
 }
 
+
+@ARTICLE{Lenglet2005,
+  author = {Christophe Lenglet and Mikaël Rousson and Rachid Deriche and Olivier
+	Faugeras and Stéphane Lehericy and Kamil Ugurbil},
+  title = {A Riemannian approach to diffusion tensor images segmentation.},
+  journal = {Inf Process Med Imaging},
+  year = {2005},
+  volume = {19},
+  pages = {591--602},
+  abstract = {We address the problem of the segmentation of cerebral white matter
+	structures from diffusion tensor images. Our approach is grounded
+	on the theoretically well-founded differential geometrical properties
+	of the space of multivariate normal distributions. We introduce a
+	variational formulation, in the level set framework, to estimate
+	the optimal segmentation according to the following hypothesis: Diffusion
+	tensors exhibit a Gaussian distribution in the different partitions.
+	Moreover, we must respect the geometric constraints imposed by the
+	interfaces existing among the cerebral structures and detected by
+	the gradient of the diffusion tensor image. We validate our algorithm
+	on synthetic data and report interesting results on real datasets.
+	We focus on two structures of the white matter with different properties
+	and respectively known as the corpus callosum and the corticospinal
+	tract.},
+  institution = {INRIA, 2004 route des lucioles, 06902 Sophia-Antipolis, France. clenglet@sophia.inria.fr},
+  keywords = {Algorithms; Artificial Intelligence; Corpus Callosum, anatomy /&/
+	histology; Diffusion Magnetic Resonance Imaging, methods; Humans;
+	Image Enhancement, methods; Image Interpretation, Computer-Assisted,
+	methods; Imaging, Three-Dimensional, methods; Pattern Recognition,
+	Automated, methods; Pyramidal Tracts, anatomy /&/ histology; Reproducibility
+	of Results; Sensitivity and Specificity; Subtraction Technique},
+  language = {eng},
+  medline-pst = {ppublish},
+  owner = {brianavants},
+  pmid = {17354728},
+  timestamp = {2011.02.09}
+}
+
+@ARTICLE{Awate2007,
+  author = {Suyash P Awate and Hui Zhang and James C Gee},
+  title = {A fuzzy, nonparametric segmentation framework for {DTI} and {{{M}}{{R}}{{I}}}
+	analysis: with applications to {DTI}-tract extraction.},
+  journal = {IEEE Trans Med Imaging},
+  year = {2007},
+  volume = {26},
+  pages = {1525--1536},
+  number = {11},
+  month = {Nov},
+  timestamp = {2009.05.18}
+}
+
+@ARTICLE{Santago1993,
+  author = {P. Santago and H. D. Gage},
+  title = {Quantification of MR brain images by mixture density and partial
+	volume modeling.},
+  journal = {IEEE Trans Med Imaging},
+  year = {1993},
+  volume = {12},
+  pages = {566--574},
+  number = {3},
+  abstract = {The problem of automatic quantification of brain tissue by utilizing
+	single-valued (single echo) magnetic resonance imaging (MRI) brain
+	scans is addressed. It is shown that this problem can be solved without
+	classification or segmentation, a method that may be particularly
+	useful in quantifying white matter lesions where the range of values
+	associated with the lesions and the white matter may heavily overlap.
+	The general technique utilizes a statistical model of the noise and
+	partial volume effect together with a finite mixture density description
+	of the tissues. The quantification is then formulated as a minimization
+	problem of high order with up to six separate densities as part of
+	the mixture. This problem is solved by tree annealing with and without
+	partial volume utilized, the results compared, and the sensitivity
+	of the tree annealing algorithm to various parameters is exhibited.
+	The actual quantification is performed by two methods: a classification-based
+	method called Bayes quantification, and parameter estimation. Results
+	from each method are presented for synthetic and actual data.},
+  doi = {10.1109/42.241885},
+  institution = {Dept. of Radiol., Wake Forest Univ., Winston-Salem, NC.},
+  language = {eng},
+  medline-pst = {ppublish},
+  owner = {brianavants},
+  pmid = {18218450},
+  timestamp = {2011.02.09},
+  url = {http://dx.doi.org/10.1109/42.241885}
+}
+
+@ARTICLE{Shattuck2001,
+  author = {D. W. Shattuck and S. R. Sandor-Leahy and K. A. Schaper and D. A.
+	Rottenberg and R. M. Leahy},
+  title = {Magnetic resonance image tissue classification using a partial volume
+	model.},
+  journal = {Neuroimage},
+  year = {2001},
+  volume = {13},
+  pages = {856--876},
+  number = {5},
+  month = {May},
+  abstract = {We describe a sequence of low-level operations to isolate and classify
+	brain tissue within T1-weighted magnetic resonance images (MRI).
+	Our method first removes nonbrain tissue using a combination of anisotropic
+	diffusion filtering, edge detection, and mathematical morphology.
+	We compensate for image nonuniformities due to magnetic field inhomogeneities
+	by fitting a tricubic B-spline gain field to local estimates of the
+	image nonuniformity spaced throughout the MRI volume. The local estimates
+	are computed by fitting a partial volume tissue measurement model
+	to histograms of neighborhoods about each estimate point. The measurement
+	model uses mean tissue intensity and noise variance values computed
+	from the global image and a multiplicative bias parameter that is
+	estimated for each region during the histogram fit. Voxels in the
+	intensity-normalized image are then classified into six tissue types
+	using a maximum a posteriori classifier. This classifier combines
+	the partial volume tissue measurement model with a Gibbs prior that
+	models the spatial properties of the brain. We validate each stage
+	of our algorithm on real and phantom data. Using data from the 20
+	normal MRI brain data sets of the Internet Brain Segmentation Repository,
+	our method achieved average kappa indices of kappa = 0.746 +/- 0.114
+	for gray matter (GM) and kappa = 0.798 +/- 0.089 for white matter
+	(WM) compared to expert labeled data. Our method achieved average
+	kappa indices kappa = 0.893 +/- 0.041 for GM and kappa = 0.928 +/-
+	0.039 for WM compared to the ground truth labeling on 12 volumes
+	from the Montreal Neurological Institute's BrainWeb phantom.},
+  doi = {10.1006/nimg.2000.0730},
+  institution = {Signal and Image Processing Institute, University of Southern California,
+	Los Angeles, California 90089, USA.},
+  keywords = {Adult; Algorithms; Anisotropy; Brain Mapping; Brain, anatomy /&/ histology;
+	Cerebrospinal Fluid, physiology; Diffusion; Humans; Image Enhancement;
+	Image Processing, Computer-Assisted; Imaging, Three-Dimensional;
+	Magnetic Resonance Imaging, classification; Mathematical Computing;
+	Phantoms, Imaging; Reference Values},
+  language = {eng},
+  medline-pst = {ppublish},
+  owner = {brianavants},
+  pii = {S1053-8119(00)90730-4},
+  pmid = {11304082},
+  timestamp = {2011.02.09},
+  url = {http://dx.doi.org/10.1006/nimg.2000.0730}
+}
