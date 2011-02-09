@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99c (TeX Live 2009)
+The top-level auxiliary file: atropos.aux
+The style file: neuroinformatics.bst
+Database file #1: atropos.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+You've used 78 entries,
+            3032 wiz_defined-function locations,
+            1650 strings with 32545 characters,
+and the built_in function-call counts, 48102 in all, are:
+= -- 3673
+> -- 2466
+< -- 21
++ -- 937
+- -- 746
+* -- 4041
+:= -- 7638
+add.period$ -- 159
+call.type$ -- 78
+change.case$ -- 400
+chr.to.int$ -- 73
+cite$ -- 78
+duplicate$ -- 3442
+empty$ -- 3396
+format.name$ -- 1001
+if$ -- 9395
+int.to.chr$ -- 6
+int.to.str$ -- 79
+missing$ -- 845
+newline$ -- 317
+num.names$ -- 236
+pop$ -- 1266
+preamble$ -- 1
+purify$ -- 312
+quote$ -- 0
+skip$ -- 933
+stack$ -- 0
+substring$ -- 2817
+swap$ -- 2032
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 466
+warning$ -- 0
+while$ -- 304
+width$ -- 0
+write$ -- 941

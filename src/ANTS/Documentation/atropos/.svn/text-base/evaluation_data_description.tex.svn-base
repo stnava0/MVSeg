@@ -1,0 +1,85 @@
+We evaluate the $N$-class Atropos GMM-MRF model, which includes 
+strong use of template-based spatial priors in order to initialize 
+and guide the method into a consistent local minimum.
+Atropos~encodes a family of segmentation techniques that may be
+instantiated for different applications but here we evaluate only two of
+the many possibilites. First, we perform an evaluation on the BrainWeb
+dataset using both the standard T1 image with multiple bias and noise
+levels and also the BrainWeb20 data, which varies the underlying
+anatomy.  Second, we evaluate the use of Atropos in improving whole
+brain parcellation and excercise its ability to efficiently solve {\em
+  many class} expectation maximization problem.  We choose this
+evaluation problem in part to illustrate the flexibility of Atropos
+and also the benefits of the novel, efficient implementation that
+allows many-class problems to be solved with low memory usage ($<$2GB
+for a 68 class model on 1mm$^3$ brain data).  
+
+
+\subsection{BrainWeb Evaluation}
+\label{sec:bweb}
+ BET2 \citep{Battaglini2008}
+against openly available silver-standard datasets, the BrainWeb 20
+(BW20) \citep{Aubert-Broche2006a} 
+
+
+BW20 results show that by relying upon accurate, high-resolution
+diffeomorphic image registration \citep{Avants2010}, Atropos~is capable
+of reliably segmenting the BW20 whole head data into the brain
+composed of separate tissue classes for muscle, skin, skull and bone
+marrow as well as the standard three tissues, cerebrospinal fluid and
+gray and white matter.  Atropos's three-tissue performance compares
+favorably with the standard EM-MRF algorithm, FAST (~Atropos~gray matter
+mean dice=0.9442, FAST=0.903,~Atropos~white matter mean dice=0.9475 and
+FAST=0.949) \citep{Klauschen2009}.  The brain extraction component of
+the solution compares favorably with BET2 (~Atropos~achieved mean $\pm$
+s.d. of 0.9642 $\pm$ stdev: 0.0098 dice coefficient and BET2 achieved
+0.9682 $\pm$ 0.0068 with an insignificant difference in performance
+$p=0.1943$).  
+
+\subsection{The Hammers Dataset Evaluation}
+\label{sec:hammers}
+We also provide, at the above location, multi-template
+labeling results derived from the Hammers dataset by applying the
+{\verb ants_multitemplate_labeling.sh } script to the 19 datasets at
+\url{http://www.brain-development.org/} \citep{Hammers2003,Heckemann2006}.
+Results are competitive with both \citep{Heckemann2006,Heckemann2010} 
+though the latter appears to use a different label set.  The closest
+comparison may be made with \citep{Heckemann2006}, which uses almost the
+same label set, though with 30 datasets in total.  Our results only
+incorporated the 19 currently available online. 
+
+\begin{comment}
+{
+\subsection{Brain Web}
+
+\subsection{The LPBA40 Dataset}  
+\label{sec:lpba}
+The LONI Probabilistic Brain Atlas data, LPBA40, \citep{Shattuck2008} was collected at the North Shore Long
+Island Jewish Health System imaging center and is maintained at UCLA.
+LPBA40 contains 40 images (20 male $+$ 20 female) from normal, healthy
+ethnically diverse volunteers with average age of 29.2 $\pm$ 6.3
+years.  Each subject underwent 3D SPGR MRI on a 1.5T GE system
+resulting in $0.86 \times 0.86 \times 1.5 mm^3$ images.  Each MRI in
+the LPBA40 dataset was manually labeled with 56 independent structures
+at the UCLA Laboratory of Neuro Imaging (LONI).  The test-retest
+reliability of the labeling, across raters, was reported as a minimum
+Jaccard ratio of $0.697$ in the supramarginal gyrus to a maximum of
+$0.966$ in the gyrus rectus.  A single labeling of each image is made
+available to the public and used, here, as silver-standard data 
+for both training and testing in our cross-validation scheme. 
+
+\subsection{The NIREP Dataset}  
+The non-rigid image registration evaluation project (NIREP
+http://www.nirep.org/) is a resource of 16 high quality labeled brain
+images at 1$mm^3$.  Each brain was labeled with 32 cortical regions
+(16 on each hemisphere) and an additional class of other gray matter
+tissue.  Regions vary in size from large (inferior temporal region) to
+small (temporal pole, insula gyrus, frontal pole).  The main drawback
+is a lack of inter-rater reliability numbers -- in particular because
+visual inspection and comparison of labelings reveals a degree of
+inconsistency in labeling of particular regions across subjects.
+Nevertheless, the NIREP dataset is perhaps the highest quality
+evaluation dataset currently available for the cortex. 
+
+}
+\end{comment}

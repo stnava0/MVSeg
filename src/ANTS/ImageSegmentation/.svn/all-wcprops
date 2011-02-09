@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svnroot/advants/!svn/ver/759/ImageSegmentation
+END
+antsPassThroughListSampleFilter.txx
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/advants/!svn/ver/598/ImageSegmentation/antsPassThroughListSampleFilter.txx
+END
+antsGaussianListSampleFunction.txx
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/advants/!svn/ver/747/ImageSegmentation/antsGaussianListSampleFunction.txx
+END
+antsAtroposSegmentationImageFilter.txx
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/advants/!svn/ver/759/ImageSegmentation/antsAtroposSegmentationImageFilter.txx
+END
+antsPassThroughListSampleFilter.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/advants/!svn/ver/598/ImageSegmentation/antsPassThroughListSampleFilter.h
+END
+antsGrubbsRosnerListSampleFilter.txx
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/advants/!svn/ver/755/ImageSegmentation/antsGrubbsRosnerListSampleFilter.txx
+END
+antsGaussianListSampleFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/advants/!svn/ver/747/ImageSegmentation/antsGaussianListSampleFunction.h
+END
+antsAtroposSegmentationImageFilter.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/advants/!svn/ver/748/ImageSegmentation/antsAtroposSegmentationImageFilter.h
+END
+antsListSampleFunction.txx
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svnroot/advants/!svn/ver/747/ImageSegmentation/antsListSampleFunction.txx
+END
+antsPartialVolumeGaussianListSampleFunction.txx
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/advants/!svn/ver/747/ImageSegmentation/antsPartialVolumeGaussianListSampleFunction.txx
+END
+antsListSampleToListSampleFilter.txx
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/advants/!svn/ver/598/ImageSegmentation/antsListSampleToListSampleFilter.txx
+END
+antsGrubbsRosnerListSampleFilter.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/advants/!svn/ver/598/ImageSegmentation/antsGrubbsRosnerListSampleFilter.h
+END
+antsListSampleFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnroot/advants/!svn/ver/747/ImageSegmentation/antsListSampleFunction.h
+END
+antsPartialVolumeGaussianListSampleFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/advants/!svn/ver/747/ImageSegmentation/antsPartialVolumeGaussianListSampleFunction.h
+END
+antsListSampleToListSampleFilter.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/advants/!svn/ver/598/ImageSegmentation/antsListSampleToListSampleFilter.h
+END
+antsManifoldParzenWindowsListSampleFunction.txx
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svnroot/advants/!svn/ver/747/ImageSegmentation/antsManifoldParzenWindowsListSampleFunction.txx
+END
+antsLogEuclideanGaussianListSampleFunction.txx
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/advants/!svn/ver/747/ImageSegmentation/antsLogEuclideanGaussianListSampleFunction.txx
+END
+antsManifoldParzenWindowsListSampleFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/advants/!svn/ver/598/ImageSegmentation/antsManifoldParzenWindowsListSampleFunction.h
+END
+antsHistogramParzenWindowsListSampleFunction.txx
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/advants/!svn/ver/747/ImageSegmentation/antsHistogramParzenWindowsListSampleFunction.txx
+END
+antsBoxPlotQuantileListSampleFilter.txx
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svnroot/advants/!svn/ver/627/ImageSegmentation/antsBoxPlotQuantileListSampleFilter.txx
+END
+antsLogEuclideanGaussianListSampleFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/advants/!svn/ver/747/ImageSegmentation/antsLogEuclideanGaussianListSampleFunction.h
+END
+antsHistogramParzenWindowsListSampleFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/advants/!svn/ver/598/ImageSegmentation/antsHistogramParzenWindowsListSampleFunction.h
+END
+antsBoxPlotQuantileListSampleFilter.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svnroot/advants/!svn/ver/598/ImageSegmentation/antsBoxPlotQuantileListSampleFilter.h
+END
