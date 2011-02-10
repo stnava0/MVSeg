@@ -188,12 +188,21 @@ average images but also individual images.  Being able to compute
 these types of measures will let us do specific, novel studies of
 neural architecture across species, gender, age and disease.
 
+So, we have two questions---one of representation , one of distance.  That is,
+what distances should we apply to what represenation of DTI data?
+
 
 \subsection{A quick tensor segmentation example}
-atropos seg example with dti
-
-two questions --- one of representation , one of distance.  that is,
-distances on what?
+Figure~\ref{fig:macaque} shows a population average of DTI data for
+the macaque monkey.  We segment the image by manually seeding each of
+3 classes (R, G and B) by hand and then calling the Atropos
+algorithm.  This parcellates the white matter within the automatically
+generated mask into regions where the tract directionality is
+primarily left-right (red), anterior-posterior (green) and
+inferior-superior (blue).  While this is somewhat anatomically
+meaningful, we would like to improve upon these results.  See, for
+instance, Figure~\ref{fig:example1} which parcellates the brain into
+anatomically determined regions.  
 \begin{figure}
 \begin{center}
 \begin{tabular}{c}
@@ -205,7 +214,7 @@ distances on what?
   You may repeat this study by labeling the macaque image with labels
   1, 2 and 3 (R, G, B) similarly to this example.  You then
   save the segmentation and run the script entitled MVSeg/src/scripts/seg\_dti\_manual\_init\_atropos.}
-\label{fig:example1}
+\label{fig:macaque}
 \end{center}
 \end{figure}
 
