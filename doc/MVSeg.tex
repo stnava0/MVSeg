@@ -146,32 +146,38 @@ chosen such that they are suitable for deriving biological and/or anatomical mea
 \subsection{Diffusion tensor primer} A diffusion tensor (DT) is a
 symmetric positive definite matrix.  Diffusion tensor imaging derives
 a dense field of DT estimates at each position in a three-dimensional
-imaging volume by measuring the amount of magnetically-induced water
-diffusion in each of $N$ directions.  Directions, here, refers to
-positions on the sphere (e.g. longitude and latitude but only in the
-northern hemisphere).  Each tensor may be described uniquely as
-$$D=\sum_i \lambda_i e_i^T e_i $$ where $e_i$ is a unit 3-vector and
+imaging volume by measuring the amount of water
+diffusion along each of $N$ directions. Directions, here, refers to
+undirected axes on the unit sphere - a measurement with gradient direction $\vec{x}$ is equivalent to a measurement with
+gradient direction $-\vec{x}$. Because of this symmetry, we can describe any measurement
+using only positions on the unit hemisphere. (e.g., longitude and latitude can describe any axis through the Earth's center, using only 
+latitudes in the northern hemisphere). 
+
+Each tensor may be described uniquely as
+$$D= \frac1{\mathrm{Tr}(D)}\sum_i \lambda_i e_i^T e_i $$ where $e_i$ is a unit 3-vector and
 $\lambda_i$ is a scalar in 0 to 1.  The $\lambda_i$ defines the
 relative amount of diffusion along the axis defined by $e_i$.  A
 highly anisotropic tensor will have $\lambda_1 >> \lambda_{2,3} $, that
-is, the prinicipal eigenvector of the tensor will have much higher
+is, the principal eigenvector of the tensor will have much higher
 diffusion than the other eigenvectors.   The variance of the
 $\lambda_i$ is known as the fractional anisotropy (FA) and their mean is
-known as the mean diffusion, apparent diffusion coefficient (ADC) or
-the trace (actually the sum). Below are some of other measurements derived from DTI:
+known as the mean diffusion or apparent diffusion coefficient (ADC). Sometimes you will see the
+tensor trace (sum of the eigenvalues) reported instead of the ADC. Below are some of other measurements derived from DTI:
 \begin{description}
-\item[RBG:] The principal direction of the tensor can be visualized in
+\item[RGB:] The principal direction of the tensor can be visualized in
   RGB space.  Some segmentation methods rely on this feature 
-  modulated by the FA.  That is, the RBG image voxel may be defined as
+  modulated by the FA.  That is, the RGB image voxel may be defined as
   $\vec{rgb}=[R=255~\text{FA}~e_1^1, G=255~\text{FA}~e_1^2, B=255~\text{FA}~e_1^3$].
 \item[FA:] Fractional anisotropy derived from the tensor.  This is
-  equal to the variance of the eigenvalues of the tensor matrix.  It
+  equal to the normalized variance of the eigenvalues of the tensor matrix.  It
   is the most common measure used in DTI studies, along with
   tractography. 
 \item[Tensor shape:]  This is determined by the tensor eigenvalues.  As
   neuroscientists interested in tracts, we may be concerned with how
   collections of eigenvalues are distributed along tracts and how
-  these distributions differentiate tracts or tissues.
+  these distributions differentiate tracts or tissues. FA is one shape measure, you can define others to describe
+  things like linearity ( $\lambda_1 >> \lambda_{2,3} $) vs planarity ( $\lambda_1 \simeq \lambda_2 >> \lambda_3 $)
+  of the ellipsoid tensor representation.
 \item[Tensor orientation:] The principal
   eigenvector can point to any position on the upper hemisphere.  As
   communicated by the power of the RGB display of tensor information,
