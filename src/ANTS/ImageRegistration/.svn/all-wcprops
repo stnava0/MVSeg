@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 47
-/svnroot/advants/!svn/ver/760/ImageRegistration
+/svnroot/advants/!svn/ver/788/ImageRegistration
 END
 itkANTSImageRegistrationOptimizer.cxx
 K 25
@@ -13,7 +13,7 @@ itkJensenTsallisBSplineRegistrationFunction.txx
 K 25
 svn:wc:ra_dav:version-url
 V 95
-/svnroot/advants/!svn/ver/514/ImageRegistration/itkJensenTsallisBSplineRegistrationFunction.txx
+/svnroot/advants/!svn/ver/788/ImageRegistration/itkJensenTsallisBSplineRegistrationFunction.txx
 END
 itkSyNDemonsRegistrationFunction.cxx
 K 25
@@ -105,17 +105,17 @@ svn:wc:ra_dav:version-url
 V 105
 /svnroot/advants/!svn/ver/687/ImageRegistration/itkVectorParameterizedNeighborhoodOperatorImageFilter.txx
 END
-itkSpatialMutualInformationRegistrationFunction.h
-K 25
-svn:wc:ra_dav:version-url
-V 97
-/svnroot/advants/!svn/ver/516/ImageRegistration/itkSpatialMutualInformationRegistrationFunction.h
-END
 itkVectorParameterizedNeighborhoodOperatorImageFilter.h
 K 25
 svn:wc:ra_dav:version-url
 V 103
 /svnroot/advants/!svn/ver/514/ImageRegistration/itkVectorParameterizedNeighborhoodOperatorImageFilter.h
+END
+itkSpatialMutualInformationRegistrationFunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/advants/!svn/ver/516/ImageRegistration/itkSpatialMutualInformationRegistrationFunction.h
 END
 itkANTSAffine3DTransform.txx
 K 25
@@ -139,7 +139,7 @@ itkJensenHavrdaCharvatTsallisPointSetMetric.txx
 K 25
 svn:wc:ra_dav:version-url
 V 95
-/svnroot/advants/!svn/ver/514/ImageRegistration/itkJensenHavrdaCharvatTsallisPointSetMetric.txx
+/svnroot/advants/!svn/ver/788/ImageRegistration/itkJensenHavrdaCharvatTsallisPointSetMetric.txx
 END
 itkANTSLabeledPointSet.h
 K 25
@@ -153,29 +153,29 @@ svn:wc:ra_dav:version-url
 V 99
 /svnroot/advants/!svn/ver/514/ImageRegistration/itkExpectationBasedPointSetRegistrationFunction.txx
 END
-itkANTSCenteredAffine2DTransform.txx
-K 25
-svn:wc:ra_dav:version-url
-V 84
-/svnroot/advants/!svn/ver/760/ImageRegistration/itkANTSCenteredAffine2DTransform.txx
-END
 itkAvantsMutualInformationRegistrationFunction.cxx
 K 25
 svn:wc:ra_dav:version-url
 V 98
 /svnroot/advants/!svn/ver/514/ImageRegistration/itkAvantsMutualInformationRegistrationFunction.cxx
 END
-itkJensenHavrdaCharvatTsallisPointSetMetric.h
+itkANTSCenteredAffine2DTransform.txx
 K 25
 svn:wc:ra_dav:version-url
-V 93
-/svnroot/advants/!svn/ver/514/ImageRegistration/itkJensenHavrdaCharvatTsallisPointSetMetric.h
+V 84
+/svnroot/advants/!svn/ver/760/ImageRegistration/itkANTSCenteredAffine2DTransform.txx
 END
 itkCrossCorrelationRegistrationFunction.cxx
 K 25
 svn:wc:ra_dav:version-url
 V 91
 /svnroot/advants/!svn/ver/514/ImageRegistration/itkCrossCorrelationRegistrationFunction.cxx
+END
+itkJensenHavrdaCharvatTsallisPointSetMetric.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svnroot/advants/!svn/ver/788/ImageRegistration/itkJensenHavrdaCharvatTsallisPointSetMetric.h
 END
 itkExpectationBasedPointSetRegistrationFunction.h
 K 25

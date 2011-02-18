@@ -1,7 +1,13 @@
 K 25
 svn:wc:ra_dav:version-url
 V 51
-/svnroot/advants/!svn/ver/770/Documentation/atropos
+/svnroot/advants/!svn/ver/784/Documentation/atropos
+END
+atropos.pdf
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/advants/!svn/ver/782/Documentation/atropos/atropos.pdf
 END
 atropos.bib
 K 25
@@ -19,7 +25,7 @@ atropos.tex
 K 25
 svn:wc:ra_dav:version-url
 V 63
-/svnroot/advants/!svn/ver/768/Documentation/atropos/atropos.tex
+/svnroot/advants/!svn/ver/784/Documentation/atropos/atropos.tex
 END
 atroposBwebRF40FigureExample.sh
 K 25
@@ -31,7 +37,7 @@ ResponseToReviewers.tex
 K 25
 svn:wc:ra_dav:version-url
 V 75
-/svnroot/advants/!svn/ver/770/Documentation/atropos/ResponseToReviewers.tex
+/svnroot/advants/!svn/ver/772/Documentation/atropos/ResponseToReviewers.tex
 END
 neuroinformatics.bst
 K 25

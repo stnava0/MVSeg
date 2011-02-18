@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 36
-/svnroot/advants/!svn/ver/684/Tensor
+/svnroot/advants/!svn/ver/785/Tensor
 END
 itkDecomposeTensorFunction2.h
 K 25
@@ -37,7 +37,7 @@ TensorFunctions.h
 K 25
 svn:wc:ra_dav:version-url
 V 54
-/svnroot/advants/!svn/ver/338/Tensor/TensorFunctions.h
+/svnroot/advants/!svn/ver/785/Tensor/TensorFunctions.h
 END
 itkPreservationOfPrincipalDirectionTensorReorientationImageFilter.cxx
 K 25

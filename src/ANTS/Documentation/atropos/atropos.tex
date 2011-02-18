@@ -255,8 +255,8 @@ describes the technical and implementation aspects of Atropos and
 evaluates its performance on two different ground-truth datasets.
 First, we use the BrainWeb dataset from Montreal Neurological
 Institute to evaluate three-tissue segmentation performance via (1)
-K-means segmentation without use of template data; (2) MRF segmentation with initialization by prior probability maps
-derived from a group template; (3) Prior-based segmentation with use
+K-means segmentation without use of template data; (2) MRF
+segmentation with initialization by prior probability maps derived from a group template; (3) Prior-based segmentation with use
 of spatial prior probability maps derived from a group template.  We
 also evaluate Atropos performance by using spatial priors to drive a 69-class EM segmentation
 problem derived from the Hammers atlas from University College London.  These evaluation studies, combined with
@@ -600,7 +600,7 @@ We assume the random field introduced earlier, $X$, is an MRF characterized by a
 and where $\mathbf{x}$ is any particular labeling configuration on $X$ (in
 other words, any labeling permutation on $X$ is {\em a priori}
 possible).  The MRF locality condition is then, 
-\begin{align}
+\begin{align}\label{eq:cond}
   p\left(x_i | x_{\mathcal{I}-\{i\}}\right) = p\left(x_i |
     x_{\mathcal{N}_i}\right) 
 \end{align}
@@ -617,7 +617,8 @@ interactions between neighboring sites across the image,%
 \footnote{
 Using a more expansive definition of  $U(\mathbf{x})$, 
 \begin{align}
-U(\mathbf{x}) = \sum_{i = 1}^N \left( V_i(x_i) + \beta \sum_{j \in \mathcal{N}_i} V_{ij}( x_i, x_j ) \right)
+U(\mathbf{x}) = \sum_{i = 1}^N \left( V_i(x_i) + \beta \sum_{j \in
+    \mathcal{N}_i} V_{ij}( x_i, x_j ) \right) \nonumber
 \end{align}
 would permit casting the other prior terms inside the definition of $U(\mathbf{x})$ in the form of the external field $V_i(x_i)$ but, for clarity purposes, we consider them separately. 
 }
@@ -700,8 +701,7 @@ Furthermore, one may automate the initialization process.
     an interactive editing and segmentation loop.  The user may
     run Atropos with sparse manual label guidance, evaluate the
     results, update the manual labels and repeat until achieving the desired
-    outcome.  This processing loop be performed easily with, e.g., ITK-SNAP.}}
-
+    outcome.  This processing loop may be performed easily with, e.g., ITK-SNAP.}}
 \begin{comment}
 {
 \subsubsection{Distance Prior for Label Propagation}
@@ -854,8 +854,8 @@ filename in the \texttt{--icm [1]} set of options.  An example adult brain
 slice and the associated code image is given in 
 Figure \ref{fig:r16icm} for an MRF neighborhood of $5 \times 5$ pixels.
 This produces a maximum code label of `13'.
-For each iteration, a random ordering of the
-set $\{1,\ldots,C\}$ is created which prescribes the order in which the
+For each iteration, one has the option to permute the
+set $\{1,\ldots,C\}$ which prescribes the order in which the
 voxel labels are updated asynchronously. After the first pass through the
 set of code labels, additional passes can further increase the posterior
 probability until convergence (in $\sim$5 iterations).  One can specify
@@ -1507,8 +1507,8 @@ individually, the 69 $\times$ 18 label images to the unlabeled
 subject.  The label probability map is gained by averaging the 18
 deformed images associated with each label.  We repeat this for each
 subject.  The following parameters are the most relevant to this discussion:
-{\ttfamily  -i  PriorProbabilityImages[3,label\_prob\%02d.nii.gz,0.5] 
--m [0.1,1x1x1] -c [5,0] -p Socrates[1]}.  Results, in terms of
+{\ttfamily  -i  PriorProbabilityImages[69,label\_prob\%02d.nii.gz,0.5] 
+-m [0.2,1x1x1] -c [5,0] -p Socrates[1]}.  Results, in terms of
 Dice overlap, are shown in Figure~\ref{fig:hammers}.
 \begin{figure}
 \begin{center}
@@ -1584,23 +1584,22 @@ and 0.956 (40\% RF bias) which are slightly higher than either SPM5 or Atropos
 results.  However, \cite{Nakamura2009} do not report WM or CSF numbers
 for comparison.  Topology-preserving methods also perform well.
 \cite{Shiee2010} achieved Dice overlap for 3\% noise 20\% RF bias BrainWeb
-single subject with 0.927, 0.912 and 0.900 for WM, GM and CSF,
-respectively.  These are excellent numbers given the topological constraint applied to the segmentation.  
-\cite{Bazin2007c} proposed TOADS and, estimating from the paper's
+single subject with 0.912 (GM), 0.927 (WM) and 0.900 (CSF) Dice
+overlap.  These are excellent numbers given the topological constraint applied to the segmentation.  \cite{Bazin2007c} proposed TOADS and, estimating from the paper's
 graph, showed that the average Dice overlap accuracy for 3\% noise for various RF
-was 0.950--0.960 for WM, 0.930--0.950 for GM and 0.920--0.940 for CSF.
+was  0.930--0.950 (GM), 0.950--0.960 (WM), and 0.920--0.940 (CSF).
 Perhaps the most recent balanced evaluation was performed in
 \citep{Klauschen2009}, which reports confusion matrix numbers, rather
 than Dice overlap.  Because the absolute true number of GM and WM
 voxels for BrainWeb are known, we can convert the confusion matrix to
-Dice overlap.  In that case, the SPM5 Dice overlap for BrainWeb single GM and WM is
-0.885 and 0.909, respectively, while FreeSurfer and FSL's accuracy
-is lower. The best GM result for 20 subjects is obtained by SPM5:
-0.930; best WM Dice overlap is from FSL: 0.950.  We note that
+Dice overlap.  In that case, the SPM5 Dice overlap for BrainWeb
+single-subject data is 0.885 (GM) and 0.909 (WM), while FreeSurfer and FSL's accuracy
+is lower. The best GM Dice overlap result for the 20 subject BrainWeb data is obtained by SPM5:
+0.930; the best WM Dice overlap is from FSL: 0.950.  We note that
 \cite{Klauschen2009} used a comprehensive evaluation where quality of
 brain extraction also contributed to the outcome.  Thus, the results
 must be interpreted slightly differently than those from other papers.
-Finally, we note that in our evaluation of 20-subject BrainWeb data, the prior
+Finally, in our evaluation of 20-subject BrainWeb data, the prior
 probability models performed best of all the models used.  Compared to
 the K-Means based segmentation, the prior based segmentation
 performance also peaked at lower values of the MRF-$\beta$ term (0.0

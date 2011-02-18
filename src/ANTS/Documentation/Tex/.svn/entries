@@ -1,14 +1,14 @@
 10
 
 dir
-762
+793
 https://advants.svn.sourceforge.net/svnroot/advants/Documentation/Tex
 https://advants.svn.sourceforge.net/svnroot/advants
 
 
 
-2010-11-22T19:45:16.548289Z
-686
+2011-02-18T15:20:48.694522Z
+790
 stnava
 
 
@@ -270,10 +270,10 @@ file
 
 
 
-2010-11-22T19:43:19.000000Z
-672713c70a7cce5ff5c43d14ed886aa0
-2010-11-22T19:45:16.548289Z
-686
+2011-02-11T20:20:09.000000Z
+96f06c6f29ad58bb47521c1cced477af
+2011-02-11T20:23:28.964317Z
+781
 stnava
 
 
@@ -296,7 +296,7 @@ stnava
 
 
 
-63571
+72706
 
 Figures
 dir
@@ -443,10 +443,10 @@ file
 
 
 
-2010-11-22T19:43:28.000000Z
-52ef03b24fc2a20ff929bc34d7364428
-2010-11-22T19:45:16.548289Z
-686
+2011-02-18T15:19:40.000000Z
+b25b9b809d3183ea0c77c7d6c9b0ff8a
+2011-02-18T15:20:48.694522Z
+790
 stnava
 has-props
 
@@ -469,7 +469,7 @@ has-props
 
 
 
-3895905
+3896607
 
 InsightJournal.sty
 file
@@ -477,11 +477,11 @@ file
 
 
 
-2010-07-08T14:15:34.000000Z
-fb656cae27a37d0e99421ffff972a628
-2009-06-09T23:42:59.300874Z
-22
-songgang
+2011-02-11T19:48:47.000000Z
+76827be6cebcfd61923fc16154780592
+2011-02-11T20:25:36.218480Z
+783
+stnava
 
 
 
@@ -503,5 +503,5 @@ songgang
 
 
 
-36069
+36071
 

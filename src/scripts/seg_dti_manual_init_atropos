@@ -31,7 +31,7 @@ fi
 fa=fa.nii.gz 
 mask=mask.nii.gz 
 ${ANTSPATH}/ImageMath 3 $fa TensorFA $DT 
-${ANTSPATH}/ThresholdImage 3 $fa $mask 0.2 9999
+${ANTSPATH}/ThresholdImage 3 $fa $mask 0.15 9999
 ${ANTSPATH}/ImageMath 3 $mask GetLargestComponent $mask
 if [ $SegType == "RGB" ] ; then 
   ${ANTSPATH}/ImageMath 3 rgb.nii.gz TensorColor $DT

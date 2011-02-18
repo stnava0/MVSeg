@@ -1170,12 +1170,14 @@ void  SurfaceImageCurvature<TSurface>
 //      kpix=1.0+this->m_Kappa1*this->m_Kappa1+this->m_Kappa2*this->m_Kappa2;
 //    kpix=fabs(this->m_Normal[0]);
       if (which == 5) kpix=this->CharacterizeSurface();
+      if (which == 6) kpix=this->m_GaussianKappa;
       ct++;
       this->m_PointList.clear();  
     }
     thresh+=kpix; 
     float offset=0;
     if ( fabs( image->GetPixel(index) - 0 ) > 1.e-6  ) offset=128.0;
+    if (which == 5) offset=0;
     this->m_FunctionImage->SetPixel(index,offset+kpix);
     ct2++;
     ++ti;

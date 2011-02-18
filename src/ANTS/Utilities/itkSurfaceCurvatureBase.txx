@@ -622,7 +622,18 @@ SurfaceCurvatureBase<TSurface,TDimension>
   float th=1.e-6;
   if (fabs(m_GaussianKappa) < th*th) m_GaussianKappa=0.0;
   if (fabs(m_MeanKappa) < th)  m_MeanKappa=0.0;
+
+  if      (m_MeanKappa > 0 && m_GaussianKappa > 0 ) return 1; // bowl
+  else if (m_MeanKappa < 0 && m_GaussianKappa > 0 ) return 2; // inv bowl
+  else if (m_MeanKappa > 0 && m_GaussianKappa <  0) return 3; // pos saddle 
+  else if (m_MeanKappa < 0 && m_GaussianKappa <  0) return 4; // neg saddle 
+  else if (m_MeanKappa > 0 && m_GaussianKappa == 0) return 5; // pos U 
+  else if (m_MeanKappa < 0 && m_GaussianKappa == 0) return 6; // neg U
+  else if (m_MeanKappa ==0 && m_GaussianKappa == 0) return 7; // flat
+  else if (m_MeanKappa ==0 && m_GaussianKappa <  0) return 8; // perfect saddle 
+  else return 0;
  
+// old below
   if      (m_MeanKappa > 0 && m_GaussianKappa > 0 ) return 8;
   else if (m_MeanKappa > 0 && m_GaussianKappa == 0) return 7;
   else if (m_MeanKappa > 0 && m_GaussianKappa <  0) return 6;

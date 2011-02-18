@@ -53,6 +53,7 @@ The revision of the paper includes:
 \item Typo fixes in the equations. 
 \item  Many minor changes in the body of the text.  
 \item  The references were altered according to reviewer suggestions.
+\item  An information sharing statement. 
 \end{enumerate}
 We express our sincere gratitude to
 the editorial staff and to the reviewers for their efforts in
@@ -79,7 +80,7 @@ Although the techniques used are not novel, the paper is primarily a description
 {\em Furthermore, I obtained the source code and compiled it successfully. Unfortunately, I could not get it to work on our in-house data before submitting this review.}
 \newline
 \newline
-{\color{blue}{Please let us know through Sourceforge (http://sourceforge.net/projects/advants/) if you run into any compilation troubles and/or troubles running the code.  In addition to Atropos adhering to strict ITK coding practices and standards, we recently turned ensured that all compilation warnings using gcc 4.2.1 on Mac OS X 10.6 were completely resolved.
+{\color{black}{Please let us know through Sourceforge (http://sourceforge.net/projects/advants/) if you run into any compilation troubles and/or troubles running the code.  In addition to Atropos adhering to strict ITK coding practices and standards, we recently turned ensured that all compilation warnings using gcc 4.2.1 on Mac OS X 10.6 were completely resolved.
 One of our motivations for making Atropos open source is the same for most of software---interaction with and feedback from users can only make our code better and more useful to us.  }}
 \newline
 \newline
@@ -94,7 +95,7 @@ and for helping us to improve our work.\\
   labellings?}
 \newline
 \newline
-{\color{blue}{We realize that the use of this term in distinguishing levels of confidence in a given data set might be a source of unnecessary confusion so we have eliminated its use.  The relevant passage current reads (first paragraph, page 6):
+{\color{black}{We realize that the use of this term in distinguishing levels of confidence in a given data set might be a source of unnecessary confusion so we have eliminated its use.  The relevant passage currently reads (first paragraph, page 6):
 \begin{quote}
 Although Atropos may be applied to multivariate data from arbitrary modalities, we limit our evaluation to tissue classification in T1 neuroimaging in part due to the abundance of “gold-standard” data for this modality.
 \end{quote}
@@ -149,7 +150,7 @@ not a property shared by graph-based methods.  As such, one would
 expect even an optimally implemented multi-label graph cut method to
 lag in speed behind an optimally implemented EM segmentation.  
 
-{\color{blue}{ We would also
+{\color{black}{ We would also
 like to point out that we have had prior experience with graph cuts (see,
 for example, our implementation available at http://hdl.handle.net/1926/1503
 and related publications:  Zhuang Song, Nicholas J. Tustison, Brian B. Avants, 
@@ -192,7 +193,7 @@ Fixed.
 {\em 8) I could not verify the validity of all the references as they were not numbered neither were they in alphabetical order. }
 \newline
 \newline
-{\color{blue}{We apologize.  In preparing the original
+{\color{black}{We apologize.  In preparing the original
 manuscript, we were unable to find a .bst for the
 Neuroinformatics journal so we created our own using
 natbib and did not use all the options to facilitate
@@ -235,7 +236,7 @@ The following comments were addressed:
 \newline
 We agree with the reviewer that establishing the benefit of
 multivariate segmentation in the presence of bias would be
-significant.  {\color{blue}{Such exploration would probably lengthen
+significant.  {\color{black}{Such exploration would probably lengthen
 the current manuscript beyond its intended scope.  However, we did 
 want to provide suggestive results with the single data set that 
 we currently have which will obviously segue into a possible future
@@ -252,7 +253,7 @@ on specific data sets for which multi-modal data sets are essential.}}
 \newline
 \newline
 The revision adds explanatory material in the body of the text
-associated with each figure.  {\color{blue}{These revisions are printed in blue font and are sprinkled throughout the manuscript.}}
+associated with each figure.  {\color{black}{These revisions are printed in blue font and are sprinkled throughout the manuscript.}}
 \newline
 \newline
 {\em Second, why is it that ``In this study, we labeled the brain web (sic) template very sparsely, quickly and crudely and did not expect highly accurate results.''
@@ -268,14 +269,14 @@ results.  We added (bottom of page 12):
     an interactive editing and segmentation loop.  The user may
     run Atropos with sparse manual label guidance, evaluate the
     results, update the manual labels and repeat until achieving the desired
-    outcome.  This processing loop be performed easily with, e.g., ITK-SNAP.
+    outcome.  This processing loop may be performed easily with, e.g., ITK-SNAP.
     \end{quote}
 {\em On page 22: ``The advancements introduced with N4 permit such an
   adaptive integration with Atropos.'' What relevant advances are
   introduced with respect to N3?}
 \newline
 \newline
-{\color{blue}{We added the following elaboration on the benefits of N4 in section 3.4.3 (page 21):
+{\color{black}{We added the following elaboration on the benefits of N4 in section 3.4.3 (page 21):
 \begin{quote}
 N4 extends the popular
 nonparametric nonuniform intensity normalization (N3) algorithm [63]
@@ -306,9 +307,9 @@ iteration as a weighted mask for input to N4.
 Done except in cases where the equation ends a sentence.   
 \newline
 \newline
-Again, we thank each of the three reviewers for their efforts.  We
-truly feel that their reading of the paper was excellent and greatly
-improved the work.
+Again, we thank each of the reviewers and the editor for their
+efforts.  We truly feel that their reading of the paper was excellent
+and greatly improved the work.
 
 % \bibliographystyle{elsarticle-harv.bst}
 % \bibliography{ftdcbdlong,avantsAll} 

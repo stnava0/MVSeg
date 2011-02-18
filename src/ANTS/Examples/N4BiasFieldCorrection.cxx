@@ -341,7 +341,7 @@ int N4( itk::ants::CommandLineParser *parser )
       }
     if( histOption->GetNumberOfParameters() > 1 )
       {
-      correcter->SetWeinerFilterNoise( parser->Convert<float>(
+      correcter->SetWienerFilterNoise( parser->Convert<float>(
 					 histOption->GetParameter( 1 ) ) );
       }
     if( histOption->GetNumberOfParameters() > 2 )
@@ -440,13 +440,16 @@ int N4( itk::ants::CommandLineParser *parser )
 
     typedef itk::ExtractImageFilter<ImageType, ImageType> CropperType;
     typename CropperType::Pointer cropper = CropperType::New();
+    cropper->SetDirectionCollapseToSubmatrix();
     cropper->SetInput( divider->GetOutput() );
     cropper->SetExtractionRegion( inputRegion );
+    cropper->SetDirectionCollapseToSubmatrix();
     cropper->Update();
 
     typename CropperType::Pointer biasFieldCropper = CropperType::New();
     biasFieldCropper->SetInput( expFilter->GetOutput() );
     biasFieldCropper->SetExtractionRegion( inputRegion );
+    biasFieldCropper->SetDirectionCollapseToSubmatrix();
     biasFieldCropper->Update();
 
     if( outputOption->GetNumberOfParameters() == 0 )

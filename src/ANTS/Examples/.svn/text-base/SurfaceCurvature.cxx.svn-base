@@ -51,6 +51,19 @@ int main(int argc, char *argv[])
       std::cout << " e.g  :   SurfaceCurvature    BrainIn.nii BrainOut.nii   3  0 " << std::endl;
       std::cout << " option 0 means just compute mean curvature from intensity " << std::endl;
       std::cout << " option 5 means characterize surface from intensity " << std::endl;
+      std::cout << " option 6 means compute gaussian curvature " << std::endl;
+      std::cout << " ... " << std::endl;
+      std::cout << " for surface characterization " << std::endl;
+      std::cout << " 1 == (+) bowl "<<std::endl;
+      std::cout << " 2 == (-) bowl  "<<std::endl;
+      std::cout << " 3 == (+) saddle "<<std::endl;
+      std::cout << " 4 == (-) saddle "<<std::endl;
+      std::cout << " 5 == (+) U "<<std::endl;
+      std::cout << " 6 == (-) U "<<std::endl;
+      std::cout << " 7 == flat "<<std::endl;
+      std::cout << " 8 == a perfectly even saddle (rare) "<<std::endl;
+      std::cout << " " << std::endl;
+      std::cout << " we add 128 to mean curvature results s.t. they are differentiated from background (zero) " <<std::endl;
       return 0;
     }
     
@@ -112,7 +125,7 @@ int main(int argc, char *argv[])
 //  Parameterizer->IntegrateFunctionOverSurface(true);  
    
   std::cout << " computing frame " << std::endl;         
-  if (opt != 5) Parameterizer->ComputeFrameOverDomain( 3 );    
+  if (opt != 5 && opt != 6 ) Parameterizer->ComputeFrameOverDomain( 3 );    
   else Parameterizer->ComputeFrameOverDomain( opt );    
   
   //   Parameterizer->SetNeighborhoodRadius( 2 );                     

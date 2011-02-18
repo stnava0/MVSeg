@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 39
-/svnroot/advants/!svn/ver/757/Utilities
+/svnroot/advants/!svn/ver/786/Utilities
 END
 itkGaussianProbabilityDensityFunction.h
 K 25
@@ -43,7 +43,7 @@ itkSurfaceImageCurvature.txx
 K 25
 svn:wc:ra_dav:version-url
 V 68
-/svnroot/advants/!svn/ver/528/Utilities/itkSurfaceImageCurvature.txx
+/svnroot/advants/!svn/ver/786/Utilities/itkSurfaceImageCurvature.txx
 END
 itkOptimalSharpeningImageFilter.txx
 K 25
@@ -271,7 +271,7 @@ itkSurfaceCurvatureBase.txx
 K 25
 svn:wc:ra_dav:version-url
 V 67
-/svnroot/advants/!svn/ver/514/Utilities/itkSurfaceCurvatureBase.txx
+/svnroot/advants/!svn/ver/786/Utilities/itkSurfaceCurvatureBase.txx
 END
 itkWarpTensorImageMultiTransformFilter.txx
 K 25

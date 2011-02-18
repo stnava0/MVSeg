@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 39
-/svnroot/advants/!svn/ver/616/Temporary
+/svnroot/advants/!svn/ver/778/Temporary
 END
 itkFEMConformalMap.cxx
 K 25
@@ -14,12 +14,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 71
 /svnroot/advants/!svn/ver/518/Temporary/itkFEMElement3DMembrane1DOF.txx
-END
-itkCopperColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 66
-/svnroot/advants/!svn/ver/514/Temporary/itkCopperColormapFunctor.h
 END
 itkFEMElement3DMembrane1DOF.h
 K 25
@@ -38,12 +32,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 68
 /svnroot/advants/!svn/ver/514/Temporary/itkLabelContourImageFilter.h
-END
-itkWinterColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 68
-/svnroot/advants/!svn/ver/514/Temporary/itkWinterColormapFunctor.txx
 END
 itkBinaryContourImageFilter.txx
 K 25
@@ -69,12 +57,6 @@ svn:wc:ra_dav:version-url
 V 69
 /svnroot/advants/!svn/ver/514/Temporary/itkBinaryContourImageFilter.h
 END
-itkRedColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 63
-/svnroot/advants/!svn/ver/514/Temporary/itkRedColormapFunctor.h
-END
 itkDirectedHausdorffDistanceImageFilter.h
 K 25
 svn:wc:ra_dav:version-url
@@ -86,12 +68,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 85
 /svnroot/advants/!svn/ver/514/Temporary/itkContourDirectedMeanDistanceImageFilter.txx
-END
-itkJetColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 63
-/svnroot/advants/!svn/ver/514/Temporary/itkJetColormapFunctor.h
 END
 itkDijkstrasAlgorithm.cxx
 K 25
@@ -105,41 +81,11 @@ svn:wc:ra_dav:version-url
 V 90
 /svnroot/advants/!svn/ver/518/Temporary/itkFEMElement3DC0LinearTriangularLaplaceBeltrami.h
 END
-itkHotColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 65
-/svnroot/advants/!svn/ver/514/Temporary/itkHotColormapFunctor.txx
-END
 itkFEMDiscConformalMap.cxx
 K 25
 svn:wc:ra_dav:version-url
 V 66
 /svnroot/advants/!svn/ver/578/Temporary/itkFEMDiscConformalMap.cxx
-END
-itkCoolColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 66
-/svnroot/advants/!svn/ver/514/Temporary/itkCoolColormapFunctor.txx
-END
-itkHSVColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 65
-/svnroot/advants/!svn/ver/514/Temporary/itkHSVColormapFunctor.txx
-END
-itkSpringColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 68
-/svnroot/advants/!svn/ver/514/Temporary/itkSpringColormapFunctor.txx
-END
-itkGreenColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 65
-/svnroot/advants/!svn/ver/514/Temporary/itkGreenColormapFunctor.h
 END
 itkFEMElement3DC0LinearTriangularMembrane.cxx
 K 25
@@ -147,47 +93,11 @@ svn:wc:ra_dav:version-url
 V 85
 /svnroot/advants/!svn/ver/518/Temporary/itkFEMElement3DC0LinearTriangularMembrane.cxx
 END
-itkAutumnColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 68
-/svnroot/advants/!svn/ver/514/Temporary/itkAutumnColormapFunctor.txx
-END
-itkGreyColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 64
-/svnroot/advants/!svn/ver/514/Temporary/itkGreyColormapFunctor.h
-END
-itkSummerColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 66
-/svnroot/advants/!svn/ver/514/Temporary/itkSummerColormapFunctor.h
-END
-itkAutumnColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 66
-/svnroot/advants/!svn/ver/514/Temporary/itkAutumnColormapFunctor.h
-END
-itkCustomColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 66
-/svnroot/advants/!svn/ver/514/Temporary/itkCustomColormapFunctor.h
-END
 itkManifoldIntegrationAlgorithm.cxx
 K 25
 svn:wc:ra_dav:version-url
 V 75
 /svnroot/advants/!svn/ver/582/Temporary/itkManifoldIntegrationAlgorithm.cxx
-END
-itkCopperColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 68
-/svnroot/advants/!svn/ver/514/Temporary/itkCopperColormapFunctor.txx
 END
 itkDivideByConstantImageFilter.h
 K 25
@@ -213,23 +123,11 @@ svn:wc:ra_dav:version-url
 V 70
 /svnroot/advants/!svn/ver/514/Temporary/itkLabelContourImageFilter.txx
 END
-itkRedColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 65
-/svnroot/advants/!svn/ver/514/Temporary/itkRedColormapFunctor.txx
-END
 itkManifoldIntegrationAlgorithm.h
 K 25
 svn:wc:ra_dav:version-url
 V 73
 /svnroot/advants/!svn/ver/578/Temporary/itkManifoldIntegrationAlgorithm.h
-END
-itkWinterColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 66
-/svnroot/advants/!svn/ver/514/Temporary/itkWinterColormapFunctor.h
 END
 itkFastMarchingImageFilter.txx
 K 25
@@ -237,29 +135,17 @@ svn:wc:ra_dav:version-url
 V 70
 /svnroot/advants/!svn/ver/528/Temporary/itkFastMarchingImageFilter.txx
 END
-itkJetColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 65
-/svnroot/advants/!svn/ver/514/Temporary/itkJetColormapFunctor.txx
-END
-itkFastMarchingImageFilter.h
-K 25
-svn:wc:ra_dav:version-url
-V 68
-/svnroot/advants/!svn/ver/528/Temporary/itkFastMarchingImageFilter.h
-END
 itkFEMElement3DC0LinearTriangular.h
 K 25
 svn:wc:ra_dav:version-url
 V 75
 /svnroot/advants/!svn/ver/518/Temporary/itkFEMElement3DC0LinearTriangular.h
 END
-itkBlueColormapFunctor.txx
+itkFastMarchingImageFilter.h
 K 25
 svn:wc:ra_dav:version-url
-V 66
-/svnroot/advants/!svn/ver/514/Temporary/itkBlueColormapFunctor.txx
+V 68
+/svnroot/advants/!svn/ver/528/Temporary/itkFastMarchingImageFilter.h
 END
 itkContourDirectedMeanDistanceImageFilter.h
 K 25
@@ -273,77 +159,11 @@ svn:wc:ra_dav:version-url
 V 60
 /svnroot/advants/!svn/ver/591/Temporary/itkDensityFunction.h
 END
-itkBlueColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 64
-/svnroot/advants/!svn/ver/514/Temporary/itkBlueColormapFunctor.h
-END
-itkHotColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 63
-/svnroot/advants/!svn/ver/514/Temporary/itkHotColormapFunctor.h
-END
-itkGreenColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 67
-/svnroot/advants/!svn/ver/514/Temporary/itkGreenColormapFunctor.txx
-END
-itkCoolColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 64
-/svnroot/advants/!svn/ver/514/Temporary/itkCoolColormapFunctor.h
-END
-itkHSVColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 63
-/svnroot/advants/!svn/ver/514/Temporary/itkHSVColormapFunctor.h
-END
 topological_numbers.h
 K 25
 svn:wc:ra_dav:version-url
 V 61
 /svnroot/advants/!svn/ver/294/Temporary/topological_numbers.h
-END
-itkSpringColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 66
-/svnroot/advants/!svn/ver/514/Temporary/itkSpringColormapFunctor.h
-END
-itkGreyColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 66
-/svnroot/advants/!svn/ver/514/Temporary/itkGreyColormapFunctor.txx
-END
-itkSummerColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 68
-/svnroot/advants/!svn/ver/514/Temporary/itkSummerColormapFunctor.txx
-END
-itkOverUnderColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 71
-/svnroot/advants/!svn/ver/514/Temporary/itkOverUnderColormapFunctor.txx
-END
-itkCustomColormapFunctor.txx
-K 25
-svn:wc:ra_dav:version-url
-V 68
-/svnroot/advants/!svn/ver/514/Temporary/itkCustomColormapFunctor.txx
-END
-itkScalarToRGBColormapImageFilter.txx
-K 25
-svn:wc:ra_dav:version-url
-V 77
-/svnroot/advants/!svn/ver/514/Temporary/itkScalarToRGBColormapImageFilter.txx
 END
 itkDijkstrasAlgorithm.h
 K 25
@@ -351,29 +171,11 @@ svn:wc:ra_dav:version-url
 V 63
 /svnroot/advants/!svn/ver/571/Temporary/itkDijkstrasAlgorithm.h
 END
-itkOverUnderColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 69
-/svnroot/advants/!svn/ver/514/Temporary/itkOverUnderColormapFunctor.h
-END
 itkFEMDiscConformalMap.h
 K 25
 svn:wc:ra_dav:version-url
 V 64
 /svnroot/advants/!svn/ver/578/Temporary/itkFEMDiscConformalMap.h
-END
-itkScalarToRGBColormapImageFilter.h
-K 25
-svn:wc:ra_dav:version-url
-V 75
-/svnroot/advants/!svn/ver/514/Temporary/itkScalarToRGBColormapImageFilter.h
-END
-itkColormapFunctor.h
-K 25
-svn:wc:ra_dav:version-url
-V 60
-/svnroot/advants/!svn/ver/514/Temporary/itkColormapFunctor.h
 END
 itkAddConstantToImageFilter.h
 K 25

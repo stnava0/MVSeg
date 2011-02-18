@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 47
-/svnroot/advants/!svn/ver/686/Documentation/Tex
+/svnroot/advants/!svn/ver/790/Documentation/Tex
 END
 antstheory.tex
 K 25
@@ -25,7 +25,7 @@ ants.tex
 K 25
 svn:wc:ra_dav:version-url
 V 56
-/svnroot/advants/!svn/ver/686/Documentation/Tex/ants.tex
+/svnroot/advants/!svn/ver/781/Documentation/Tex/ants.tex
 END
 atropos.tex
 K 25
@@ -73,13 +73,13 @@ ants.pdf
 K 25
 svn:wc:ra_dav:version-url
 V 56
-/svnroot/advants/!svn/ver/686/Documentation/Tex/ants.pdf
+/svnroot/advants/!svn/ver/790/Documentation/Tex/ants.pdf
 END
 InsightJournal.sty
 K 25
 svn:wc:ra_dav:version-url
-V 65
-/svnroot/advants/!svn/ver/22/Documentation/Tex/InsightJournal.sty
+V 66
+/svnroot/advants/!svn/ver/783/Documentation/Tex/InsightJournal.sty
 END
 runtex.sh
 K 25

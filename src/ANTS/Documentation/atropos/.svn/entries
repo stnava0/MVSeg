@@ -1,15 +1,15 @@
 10
 
 dir
-770
+793
 https://advants.svn.sourceforge.net/svnroot/advants/Documentation/atropos
 https://advants.svn.sourceforge.net/svnroot/advants
 
 
 
-2011-02-08T14:42:12.075069Z
-770
-ntustison
+2011-02-11T20:26:20.723492Z
+784
+stnava
 
 
 
@@ -25,6 +25,40 @@ ntustison
 
 
 fd2da0a4-d968-48df-9cb5-d8c496287cbf
+
+atropos.pdf
+file
+
+
+
+
+2011-02-10T14:53:32.000000Z
+c8ab843e2f72fc94ca570ddb019a7003
+2011-02-11T20:24:12.177873Z
+782
+stnava
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1342765
 
 atropos.bib
 file
@@ -103,10 +137,10 @@ file
 
 
 
-2011-02-08T12:58:01.000000Z
-47a4e3afd4eaedf5de9db3fd3b18dd88
-2011-02-08T12:58:13.128243Z
-768
+2011-02-10T15:46:48.000000Z
+0bc70614e829b9d27cadc65e58e27df6
+2011-02-11T20:26:20.723492Z
+784
 stnava
 has-props
 
@@ -129,7 +163,7 @@ has-props
 
 
 
-94668
+94710
 
 atroposBwebRF40FigureExample.sh
 file
@@ -171,11 +205,11 @@ file
 
 
 
-2011-02-08T16:04:00.000000Z
-26f4589f38f00f0aa0d35160a78ce34b
-2011-02-08T14:42:12.075069Z
-770
-ntustison
+2011-02-09T22:11:44.000000Z
+f751a1b12b4042c8370b7a9e9c1096ed
+2011-02-09T22:28:11.915432Z
+772
+stnava
 
 
 
@@ -197,7 +231,7 @@ ntustison
 
 
 
-15479
+15543
 
 neuroinformatics.bst
 file

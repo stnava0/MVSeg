@@ -8,7 +8,7 @@
 
 \documentclass{InsightArticle}
 
-\usepackage[dvips]{graphicx}
+% \usepackage[dvips]{graphicx}
 %\usepackage{listing}						
 \usepackage{listings}	
 \usepackage{wrapfig}
@@ -249,7 +249,7 @@ similarity and optimization criteria as options.  The program is
 wrapped in \verb ants.sh ~for normalization with ``out of the box''
 parameters and in \verb buildtemplateparallel.sh ~for 
 computationally distributed optimal template construction.
-You can also call  \verb ANTS \verb --help to get basic usage. 
+You can also call  \verb ANTS  \verb --help  to get basic usage. 
 
 
 \subsection{The WarpImageMultiTransform Executable}
@@ -311,13 +311,9 @@ $M~N~O$  is the center of rotation .
 You can use the --initial-affine  and    --continue-affine  options to control how this is used in registration. 
 
 \subsubsection{Deformation Field File}
-ANTS writes the deformation field using one file for the deformation in each dimension. 
-For example, if the deformation field is named ABCD.nii.gz and exists in three dimensions, the corresponding files are:
-ABCDxvec.nii.gz, 
-ABCDyvec.nii.gz, 
-ABCDzvec.nii.gz (for 3D).  Note that ANTS programs {\em assume} the $*$vec part of the name will exist.  Thus, 
-one refers to the warp file as  ABCD.nii.gz , dropping the $*$vec from the name. 
-The displacement for each voxel is defined in physical image space.  If you want to 
+ANTS writes the deformation field into a multi-component image (latest
+release).  Thus, 
+one refers to the warp file as ABCD.nii.gz which, in 3D, contains 3 components.  If you want to 
 see the details of how a warp is achieved, look at the code in itkWarpImageMultiTransform.txx. 
 One issue to be aware of is that if you are directly indexing a vector component image in 
 voxel coordinates, then you need to apply the image's direction matrix to the vector.  
@@ -336,9 +332,9 @@ For example, for in 3D with -o RegA2B.nii.gz , the typical output files are:
 Affine transform file: 
 RegA2BAffine.txt 
 Warping deformation field: 
-RegA2BWarpxvec.nii.gz, RegA2BWarpyvec.nii.gz, RegA2BWarpzvec.nii.gz
+RegA2BWarp.nii.gz.
 Inverse warping deformation field:
-RegA2BInverseWarpxvec.nii.gz, RegA2BInverseWarpyvec.nii.gz, RegA2BInverseWarpzvec.nii.gz.  
+RegA2BInverseWarp.nii.gz.  
 To apply the affine transform and the deformation field to the moving image, use WarpImageMultiTransform. 
 For example: to apply the transform to the moving image:
 
@@ -357,8 +353,7 @@ output images and some output only to the terminal.   ImageMath allows
 one to multiply images together (m), to negate images (Neg), to take
 an image to a power (pow), to test the invertibility of
 transformations (InvId), to compute the fractional anisotropy of an
-image (TensorFA) and to perform Markov Random Field segmentation with
-or without priors (Segment).   Many other operations are available.
+image (TensorFA) and to perform many other feats of image processing strength.   
 Like all other ANTS programs, one may call ImageMath from the command
 line to see all of its options.   ImageMath is used heavily in ANTS
 scripts.   You can call it, in compination with grep or less, to attempt to
@@ -368,20 +363,19 @@ find some of its capabilities.
 The ANTS/Scripts directory contains (hopefully) user-friendly
 wrappings of ANTS tools that enable higher-level error checking and
 combinations of basic ANTS functions.  These scripts are called as
-\verb sh ~ \verb antsscriptname.sh ~ and provide usage when called
-from the command line.  For instance, try \verb sh ~ \verb ants.sh .
+\verb bash ~ \verb antsscriptname.sh ~ and provide usage when called
+from the command line.  For instance, try \verb bash ~ \verb ants.sh .
 Additionally, if you run ants in tcsh shells, you will need to call it
 as follows:
 \begin{verbatim}
-~/Code/ANTSSourceForgeSVN/bin/ANTS 2 -m PR\[r16slice.nii,r64slice.nii,1,2\]
+~/Code/ANTSSourceForgeSVN/bin/ANTS 2 -m CC\[r16slice.nii,r64slice.nii,1,2\]
 \end{verbatim}
 instead of
 \begin{verbatim}
-~/Code/ANTSSourceForgeSVN/bin/ANTS 2 -m PR[r16slice.nii,r64slice.nii,1,2]
+~/Code/ANTSSourceForgeSVN/bin/ANTS 2 -m CC[r16slice.nii,r64slice.nii,1,2]
 \end{verbatim}
-because tcsh does no interpret the brackets as intended.  Using the
-bash shell script interface also avoids this.  The key change involves using the slash to force tcsh to 
-interpet the bracket literally. 
+because tcsh does not interpret the brackets as intended.  Using the
+bash shell script interface also avoids this.  The key change involves using the slash to force tcsh to interpet the bracket literally. 
 \newpage
 \section{ImageRegistration with ANTS}
 \begin{wrapfigure}{r}{0.5\textwidth}
@@ -389,7 +383,7 @@ interpet the bracket literally.
 \begin{minipage}[t]{0.45\textwidth}
 {\bf Quick Start:} {\color{blue}call ants.sh (from ANTS/Scripts/) to get usage and apply a normalization to some of your existing data.  It is instructional to read the script, modify some of the parameters and re-run to witness the effect of your changes -- image registration is an art as well as science.  Many other ``ready to go'' scripts are available in ANTS/Scripts. The user must set his/her ANTSPATH environment variable  -- which points to the location of ANTS binaries -- within these scripts or in their environment.  Note: All ANTS programs provide usage when called from the command line.  Most require the image dimension to be specified as the first parameter.  E.g. 
   ImageMath ImageDimension 
-where ImageDimenion is 2 or 3.}
+where ImageDimenion is 2, 3 or 4.}
 \end{minipage}}
 \end{wrapfigure}
 There are two general applications of image registration. The first application is transforming labeled data from a template image space into an individual space. This strategy is important when appearance alone is not enough to locate a structure as, for example, in the case of hippocampus segmentation. The template provides a prediction of the hippocampus-amygdala boundary.
@@ -415,13 +409,8 @@ ANTS may be used to navigate the transformation and similarity metric space.
 \subsection{Use Your Header!} ANTS uses the direction/orientation, spacing
 and origin in its definitions of the mapping between images.  That is,
 ANTS uses the nifti standard defintions of an image space.  So, the
-image orientation (direction), origin and spacing are important!  You
-may ``check'' for consistency between two image header definitions by
-using: ImageMath 3 Image2repaired.nii.gz CompareHeadersAndImages
-Image1.nii.gz Image2.nii.gz \newline This will compare Image2 to
-Image1 and ``fix'' the header of Image2, writing out to
-Image2repaired.
-
+image orientation (direction), origin and spacing are important!  The
+program 'PrintHeader' will give you information about your image's header.
 
 \subsection{ANTS Transformation Models}
 The ANTS toolkit provides a hierarchy of transformations with
@@ -454,7 +443,9 @@ An overview of available models and similarity terms is in Table~\ref{table:char
        {} & Geodesic SyN$^\dagger$ &  CC, PR, MI, MSQ, PSE  &  $~\min~\velocity(\x,t)$ over all time \\
     \bottomrule
     \end{tabular}
-  \caption{Transformations and a subset of the similarity metrics available in ANTS.  Similarity metric acronyms:  CC = fast cross correlation, PR = pure cross correlation (the preferred metric), MSQ = mean squared difference, MI = mutual information, PSE = point-set expectation \cite{Pluta2008}.  ANTS also provides the inverse of those transformations denoted by the `$\dagger$' symbol.  The brief descriptions of the diffeomorphic algorithms contrast the way in which the velocity field is optimized and used to parameterize $\phi$, the mapping.  All 
+  \caption{Transformations and a subset of the similarity metrics
+    available in ANTS.  Similarity metric acronyms:  CC = fast cross
+    correlation (the preferred metric), PR = cross correlation (deprecated), MSQ = mean squared difference, MI = mutual information, PSE = point-set expectation \cite{Pluta2008}.  ANTS also provides the inverse of those transformations denoted by the `$\dagger$' symbol.  The brief descriptions of the diffeomorphic algorithms contrast the way in which the velocity field is optimized and used to parameterize $\phi$, the mapping.  All 
 ANTS Diff algorithms generate $\phi(\x,t)$ over $t \in [ 0, 1]$ through gradient descent.}
   \label{table:chart}
 \end{table*}    
@@ -562,10 +553,10 @@ Gradient descent optimization of an elastic mapping may be summarized (crudely) 
 where $\Pi$ is the similarity, $\delta$ is a gradient step length and $G_\sigma$ is a gaussian smoother.
 This optimization is captured in the following ANTS command:
 \begin{verbatim}
-ANTS 3 -m PR[AtlasHead.nii,crAnatomical.nii,1,4] -r Gauss[0,3]  
+ANTS 3 -m CC[AtlasHead.nii,crAnatomical.nii,1,4] -r Gauss[0,3]  
 -o ElasticTest.nii.gz -i 30x20x10  -t Elast[1.5] 
 \end{verbatim}
-Here, we use the PR metric (a cross-correlation implementation) with
+Here, we use the CC metric (a cross-correlation implementation) with
 window radius 4, weight 1 and gradient step length 1.5.  The
 optimization will be performed over three resolutions with a maximum
 of 30 iterations at the coarsest level, 20 at the next coarsest and 10
@@ -614,7 +605,7 @@ causes expansion, then $\mathcal{J}(\x) > 1$. }
 A few important notes follow. 
 (1) Deformation directionality: Warps/deformations applied to images occur in the opposite direction from warps/deformations applied to points. That is, if we map image B to A using 
 \begin{verbatim}
-ANTS 2 -m PR[A,B,1,2] -o OUTPUT 
+ANTS 2 -m CC[A,B,1,2] -o OUTPUT 
 \end{verbatim}
  then we get a deformation called \verb OUTPUTWarp+extensions ~and an affine transform called \verb OUTPUTAffine.txt . 
 This composite mapping - when applied to B - will transform B into the space of A. 
@@ -658,47 +649,200 @@ An additional advantage of the diffeomorphic model over the elastic model is
 that both forward and inverse transformations are computed thus allowing one 
 to deform fixed to moving and also moving to fixed.   The transformation model 
 chosen here -- \verb SyN[0.25] -- may be replaced with other 
-diffeomorphic transformation models.  The most general is global-in-time SyN via \verb SyN[0.25,2,0.01]   , 
+diffeomorphic transformation models.  The step-size (0.25) impacts
+accuracy.  Smaller is generally more accurate but takes more time to
+compute and may not capture as much deformation if the optimization is
+caught in a local minimum.  The most general is global-in-time SyN via \verb SyN[0.25,2,0.01]   , 
 where the time step for integration is 0.01 (lower is more accurate).  A fast approximate 
 solution may be gained through 
 exponential mapping via \verb Exp[0.25,10] , where 10 integrations points are used. 
 Update schemes for diffeomorphic optimization are similar to the elastic case 
 and are described elsewhere \cite{Avants2008b,ANTStheory}.   
 
-\subsection{ANTS Similarity Terms}
+\subsection{ANTS Similarity Terms and Other Functions}
 Here is a script that will let you experiment with different similarity term 
 and transformation model combinations.  A few are listed, with parameters 
 that are a reasonable starting point.
 \begin{verbatim}
-II=r16slice.nii # change to your own images 
-JJ=r64slice.nii 
-DIM=2 # two-dimensional images 
-ITS=" -i 100x100x30 " # 3 optimization levels 
-TSYNWITHTIME=" -t SyN[0.5,5,0.01]  -r Gauss[3,0] "
-TGREEDYSYN=" -t SyN[0.25]  -r Gauss[3,0] "
-TELAST=" -t Elast[1] -r Gauss[0.5,3] " 
-TEXP="  -t Exp[0.5,10] -r Gauss[0.5,3] " 
-LABELGUIDED=" -m PSE[${II},${JJ},${II},${JJ},0.75,0.1,25,0,10] "
+# The user should define two images.  here we use ANTS reference data
+II=r16slice.nii.gz 
+JJ=r64slice.nii.gz
+# 
+OUTPUTNAME=OUT  # define the output prefix 
+ITS=" -i 100x100x30 " # 3 optimization levels
+
+# different transformation models you can choose
+TSYNWITHTIME=" -t SyN[0.25,5,0.01] -r Gauss[3,0] " # spatiotemporal (full) diffeomorphism
+TGREEDYSYN=" -t SyN[0.15] -r Gauss[3,0] "          # fast symmetric normalization
+TELAST=" -t Elast[1] -r Gauss[0.5,3] "             # elastic 
+TEXP=" -t Exp[0.5,10] -r Gauss[0.5,3] "            # exponential
+
+# different metric choices for the user 
 INTMSQ=" -m MSQ[${II},${JJ},1,0] "
-INTMI=" -m MI[${II},${JJ},1,32] "
-INTCC=" -m CC[${II},${JJ},1,4] "
-NAME=TEST
-INT=$INTPR
-TRAN=$TSYN
-ANTS $DIM -o $NAME $ITS  $TRAN  $INT
-INVW=" -i ${NAME}Affine.txt ${NAME}InverseWarp.nii.gz "
-FWDW=" ${NAME}Warp.nii.gz ${NAME}Affine.txt "
-WarpImageMultiTransform  2 ${II} a.nii.gz -R ${JJ} $INVW
-WarpImageMultiTransform  2 ${JJ} b.nii.gz -R ${II} $FWDW
+INTMI=" -m MI[${II},${JJ},1,32] " 
+INTCC=" -m CC[${II},${JJ},1,4] " 
+#
+#
+# these are the forward and backward warps. 
+#
+INVW=" -i ${OUTPUTNAME}Affine.txt ${OUTPUTNAME}InverseWarp.nii.gz " 
+FWDW=" ${OUTPUTNAME}Warp.nii.gz ${OUTPUTNAME}Affine.txt " 
+#
+INT=$INTCC  # choose a  metric ( here , cross-correlation )
+TRAN=$TGREEDYSYN  # choose a transformation 
+if [[ $OPT == "Reg" ]] ; then 
+
+# run the registration
+${ANTSPATH}/ANTS $DIM -o $OUTPUTNAME $ITS $TRAN $INT 
+# this is how you apply the output transformation 
+${ANTSPATH}/WarpImageMultiTransform $DIM ${II} ${OUTPUTNAME}IItoJJ.nii.gz -R ${JJ} $INVW 
+${ANTSPATH}/WarpImageMultiTransform $DIM ${JJ} ${OUTPUTNAME}JJtoII.nii.gz -R ${II} $FWDW
+
+elif [[ $OPT == "RegSeg" ]] ; then 
+
+# try something different -- segment the images and use them in ANTS 
+# to run multivariate registration.
+IISEG=${OUTPUTNAME}A_seg.nii.gz
+JJSEG=${OUTPUTNAME}B_seg.nii.gz
+#
+# get masks for atropos 
+#
+${ANTSPATH}ThresholdImage $DIM $II $IISEG 1 1.e9
+${ANTSPATH}ThresholdImage $DIM $JJ $JJSEG 1 1.e9
+AtroposParams=" -d $DIM -m [0.1,1x1] -c [5,0] -i kmeans[3] "
+${ANTSPATH}/Atropos $AtroposParams -a $II -o $IISEG  -x $IISEG 
+${ANTSPATH}/Atropos $AtroposParams -a $JJ -o $JJSEG  -x $JJSEG 
+# compute some segmentations and use them in labelguided mapping 
+LABELGUIDED=" -m PSE[${II},${JJ},${IISEG},${JJSEG},0.75,0.1,25,0,10] "  
+#
+${ANTSPATH}/ANTS $DIM -o ${OUTPUTNAME} $ITS $TRAN $INT $LABELGUIDED 
+${ANTSPATH}/WarpImageMultiTransform $DIM ${II} ${OUTPUTNAME}IItoJJ.nii.gz -R ${JJ} $INVW 
+${ANTSPATH}/WarpImageMultiTransform $DIM ${JJ} ${OUTPUTNAME}JJtoII.nii.gz -R ${II} $FWDW
+
+elif [[ $OPT == "BTP" ]] ; then 
+#
+# now build a template from the two input images .
+# in a real application, you would modify the call to btp 
+# such that it's more appropriate for your data.  
+# call buildtemplateparallel.sh -h to get usage.
+# 
+${ANTSPATH}buildtemplateparallel.sh -d 2  -o ${OUTPUTNAME}BTP -c 0 $II $JJ
+fi 
 \end{verbatim}
 Convergence occurs under two conditions: (1) either the maximum number of 
 iterations are reached at a given optimization level or (2) the slope 
 of the change in the optimization objective is negative or very small. 
-{\em Note: ANTS does not like spaces between brackets in the call to the metrics.}
 
 
 \subsection{Choosing a Metric}
-\input{metric.tex}
+ANTS supports both volumetric registration and point set registration. The image / point set similarity metrics in ANTS are unified in the form of a function on the images or the point sets:       $$\textbf{Similarity}[\textbf{fixedImage}, \textbf{movingImage}, \textbf{weight}, \textbf{parameters}].$$
+        
+The similarity type for the deformation transformation is specified by
+the \verb -m  option, which contains two parts: simarity type and the parameters inside the brackets. (Note: no white spaces exist between parameters.) The possible similarity metrics for volumetric images are: 
+\begin{itemize}
+    \item Cross correlation estimate:  \verb " -m  CC[fixedImage,movingImage,weight,radius]". This metric works
+      well for intra-modality and some inter-modality image registration. For example, \verb"-m CC[fixed.nii,moving.nii,1,5]" specifies:
+    \begin{itemize}
+        \item the fixed image: fixed.nii
+        \item the moving image: moving.nii             
+        \item weight for this metric is 1 (i.e. only this metric drives the registration).      
+        \item the region radius for computing cross correlation is 5
+    \end{itemize}
+
+    \item Mutual information: \verb"-m MI[fixedImage,movingImage,weight,number-of-histogram-bins]". This metric works both well for intra-modality and inter-modality image registration. For example, the first three parameters in \verb"-m MI[fixed.nii,moving.nii,1,32]" is similar to the example above in cross correlation, except that the last parameter means that the number of bins in computing mutual information is 32.
+
+    \item PR: \verb"-m PR[fixedImage,movingImage,weight,radius]". This
+      metric is deprecated.  It still ``works'' but CC is preferred.  
+
+    \item Mean square difference: \verb"-m MSQ[fixedImage,movingImage,weight,0]". This metric works for intra-modality image registration. The last parameter \verb"0" is a padding value of no real meaning. For example, \verb"-m MSQ[fixed.nii,moving.nii,1,0]". 
+
+\end{itemize}
+
+ANTS also support registration of point sets. The supported formats for point sets can be found in I/O section. The similarity metrics for point sets are:
+\begin{itemize}
+    \item Point set expectation: 
+     \begin{verbatim}
+-m PSE [fixedImage,movingImage,fixedPoints,movingPoints,weight,
+pointSetPercentage,pointSetSigma,boundaryPointsOnly,
+kNeighborhood,PartialMatchingIterations=100000]
+    \end{verbatim}
+    \begin{itemize}
+        \item \verb"fixedImage": defines the space domain of the fixed point set.
+        \item \verb"movingImage": defines the space domain of the moving point set.
+        \item \verb"fixedPoints/Image": defines the coordinates of the fixed point set or label image. It can be an image with discrete positive labels, a VTK format point set file, or a text file. Details can be found in I/O section (TODO).
+        \item \verb"movingPoints/Image": defines the coordinates of the moving point set or label image. 
+        \item \verb"weight": weight for this metric. \verb"1" means that only this metric drives the registration.
+        \item \verb"pointSetPercentage": the percentage of points to be randomly sampled used in the registration.
+        \item \verb"pointSetSigma": the standard deviation of the Parzen window used to estimate the expectation. 
+        \item \verb"boundaryPointsOnly":  \verb"1" (or ``true'') means only the boundary points in the label image is used to drive registration.
+        \item \verb"kNeighborhood" is a positive discrete number. The first $k$ neighbors are used to compute the deformation during the registration. 
+        \item \verb"PartialMatchingIterations" controls the symmtry in the matching. This option assumes the complete labeling is in the first set of label parameters ... more iterations leads to more symmetry in the matching  - 0 iterations means full asymmetry 
+    \end{itemize}
+
+    \item Jensen-Tsallis BSpline
+    \begin{verbatim}
+-m JTB[fixedImage,movingImage,fixedPoints,movingPoints,weight,
+pointSetPercentage,pointSetSigma,boundaryPointsOnly,kNeighborhood,alpha,
+meshResolution,splineOrder,numberOfLevels,useAnisotropicCovariances] 
+    \end{verbatim}
+    \begin{itemize}
+        \item \verb"fixedImage": defines the space domain of the fixed point set.
+        \item \verb"movingImage": defines the space domain of the moving point set.
+        \item \verb"fixedPoints": defines the coordinates of the fixed point set. It can be an image with discrete positive labels, a VTK format point set file, or a text file. Details can be found in I/O section (TODO).
+        \item \verb"movingPoints": defines the coordinates of the moving point set.
+        \item \verb"weight": weight for this metric. \verb"1" means that only this metric drives the registration.
+        \item \verb"pointSetPercentage": the percentage of points to be randomly sampled used in the registration.
+        \item \verb"pointSetSigma": the sigma for the Parzen window used to estimate probabilities.  
+        \item \verb"boundaryPointsOnly": [TODO] \verb"1" (or ``true'') means only the boundary points in the point sets are used to drive registration.
+        \item \verb"kNeighborhood" is a positive discrete number. The first $k$ neighbors are used to compute the deformation during the registration. 
+        \item \verb"alpha"
+        \item \verb"meshResolution"
+        \item \verb"splineOrder"
+        \item \verb"numberOfLevels"
+        \item \verb"useAnisotropicCovariances"
+    \end{itemize}
+
+\end{itemize}
+
+ANTS has three affine registration similarity metrics for volumetric images, which are specified using \verb"--affine-metric-type":
+\begin{itemize}
+    \item Mutual information, specified as \verb"--affine-metric-type MI". This usually works for both inter and intra-modalities in 3D. Also, the options used in computing mututal information in affine registration can be specified as \verb"--MI-option N1xN2". The first parameter \verb"N1" specifies the number of bins. The second parameter \verb"N2" specifies the number of samples. For example: \verb"--MI-option 32x8000".
+    \item Cross-correlation  \verb"--affine-metric-type CC".  CC has a
+      wide capture range.  
+    \item Mean square difference, specified using \verb"--affine-metric-type MSE". There is no options for this metric.
+\end{itemize}
+
+Fig. \ref{fig:metric_example} shows the registration result using intensity difference with the following command:
+\begin{verbatim}
+ANTS 2 -m MSQ[r16slice.nii,r64slice.nii,1,0] -r Gauss[3,0] -t SyN[0.5] -i 50x50x30
+\end{verbatim}
+
+%        \begin{wrapfigure}{r}{0.5\textwidth}
+\begin{figure}
+    \label{fig:metric_example}
+    \centering
+    \begin{tabular}[h]{c|c|c}
+%        \includegraphics[width=0.16\textwidth]{Figures/r16slice.jpg} &
+%        \includegraphics[width=0.16\textwidth]{Figures/r64slice.jpg} &
+ %       \includegraphics[width=0.16\textwidth]{Figures/resMSQ.jpg} \\
+        fixed image &
+        moving image & 
+        MSE  \\
+    \end{tabular} 
+    \itkcaption{registration using mean square intensity difference}
+\end{figure}
+    %    \end{wrapfigure}
+Here is also an example script to register a pair of images using mean square intensity difference and computing the metrics of the registration image.
+\begin{verbatim}
+#use intensity difference with radius 0 -- radius no effect on intensity difference
+ANTS 2 -m MSQ[r16slice.nii,r64slice.nii,1,0] -r Gauss[3,0] -t SyN[0.5] -i 50x50x30
+WarpImageMultiTransform 2 r64slice.nii resMSQ.nii Warp.nii Affine.txt
+MeasureImageSimilarity 2 0 r16slice.nii resMSQ.nii metricexamplelog.txt
+MeasureImageSimilarity 2 1 r16slice.nii resMSQ.nii metricexamplelog.txt
+MeasureImageSimilarity 2 2 r16slice.nii resMSQ.nii metricexamplelog.txt
+ConvertToJpg resMSQ.nii resMSQ.jpg
+\end{verbatim}
+
 
 \subsection{Diffusion Tensor Normalization}
 The ImageMath program -- via TensorFA and TensorMeanDiffusion -- 
@@ -732,13 +876,13 @@ A second type of multivariate normalization is able to use the T1 and DTI compon
 directly in the optimization of the mapping.  An example of this type of call is below, 
 where we assume that one has resampled the DT data to the space of T1: 
 \begin{verbatim}
-ANTS 3 -m PR[T1template.nii,T1subject.nii,1.25,4]
-       -m PR[FAtemplate.nii,FAsubject.nii,1,4] 
+ANTS 3 -m CC[T1template.nii,T1subject.nii,1.25,4]
+       -m CC[FAtemplate.nii,FAsubject.nii,1,4] 
 -o MultiVar -i 30x30x20  -r Gauss[3,0] -t SyN[0.25]
 \end{verbatim}
 In this case, dense features within white matter are gained by using the DT component  
-in addition to the T1 component.   The T1 PR metric, here, is weighted slightly more 
-than the FA PR metric, 1.25 vs. 1.0.  {\em The convergence criterion for 
+in addition to the T1 component.   The T1 CC metric, here, is weighted slightly more 
+than the FA CC metric, 1.25 vs. 1.0.  {\em The convergence criterion for 
 the multivariate scenario is a slave to the {\bf last} metric you 
 pass on the ANTS command line}.
 
@@ -774,21 +918,22 @@ across this dataset -- is recovered in the derived optimal template.}
 \end{figure}
 \begin{enumerate}
 \item   Make a directory for this example.   Copy or link all the B*tiff images into it.
-\item Copy the file ANTS/Scripts/buildtemplate.sh into that directory.  
+\item Copy the file ANTS/Scripts/buildtemplateparallel.sh into that directory.  
 \item  On the command line, within that directory, run the following command: 
-\verb  sh ~ \verb buildtemplate.sh ~ to get usage. 
-\item If you follow the usage, you will then call the script something like this: 
-\verb sh ~ \verb buildtemplate.sh ~ \verb 2 ~ \verb B ~ \verb tiff ~ \verb OUT ~ \verb 4 ~ . 
-\item The script should exit and ask if the parameters are ok for your problem.  
-Check the path to the programs, the fact that all the images you want to use are being 
-listed and that the template output name is ok with you.  
-Once everything is prepared, then edit the script to remove the exit call at the end of the parameter check. 
-\item  Call the script as in step 4 and then wait for the output.  The template will 
-be called something like (in this example)  \verb OUTtemplate.nii.gz .
+\verb  bash ~ \verb buildtemplateparallel.sh ~ \verb -h ~ to get usage. 
+\item Following the usage, you can write a script that contains a call like this: 
+\verb buildtemplateparallel.sh ~ \verb  -d ~ \verb  2 ~ \verb -o ~ \verb  BTP ~ \verb -c ~ \verb  0 ~ \verb  B*tiff
+% \verb bash ~ \verb ~ \verb 2 ~ \verb B ~ \verb tiff ~ \verb OUT ~ \verb 4 ~ . 
+\item  Call the script in step 4 and then wait for the output.  The template will 
+be called (in this example)  \verb BTPtemplate.nii.gz .
+\item If the script does not produce the desired output, check that
+  you defined \$ANTSPATH in your path.
+You may also check and or define the path to the ANTs programs
+explicitly by editing this variable in buildtemplateparallel and antsIntroduction.
 \end{enumerate}
-The script is fairly easy to alter so that you can send the whole thing to distributed computing. 
-Typically, one would use voxbo or the qsub program available in the Sun Grid Engine.  This 
-is what is done in \verb buildtemplateparallel.sh .  
+The script offers an option ( -c 1  for qsub , -c 2 to attempt to use
+multiple cores on your machine )  so that you can send the whole thing to distributed computing. 
+Typically, one would use voxbo or the qsub program available in the Sun Grid Engine.  
 Figure~\ref{fig:template} shows the data and a result that may be recreated by the user.
 \subsection{Notes on Large Deformation Mapping} 
 Figure~\ref{fig:large} defines what one might expect from a 
@@ -820,12 +965,12 @@ Usually, reasons for registration failure are one of a very few things:
 An example of this final point is given here.   
 A recent study used the following call to ANTS across a dataset of elderly subjects:
 \begin{verbatim}
-ANTS 3 -m PR[template.nii.gz,subject.nii.gz,1,2] -i 10x50x50x20
+ANTS 3 -m CC[template.nii.gz,subject.nii.gz,1,2] -i 10x50x50x20
  -o subjectmap.nii.gz -t SyN[0.25] -r Gauss[3,0]
 \end{verbatim}
-This succeeded for all subjects but one.  This subject had severe neurodegeneration which caused "under-normalization" to result.  A larger deformation mapping was required and so we increased the maximum number of iterations (the "-i" parameter).  One might also increase the gradient-descent step-size (SyN[0.25] => SyN[0.5]).   Large deformation mapping is challenging not only because of the amount of deformation, but also because the "true" solution is difficult to find.  Keeping this in mind, we also increased the "span" (radius) of the correlation window in the similarity metric (which also increases computation time). These modified parameters succeeded: 
+This succeeded for all subjects but one.  This subject had severe neurodegeneration which caused "under-normalization" to result.  A larger deformation mapping was required and so we increased the maximum number of iterations (the "-i" parameter).  One might also increase the gradient-descent step-size (SyN[0.25] $\rightarrow$ SyN[0.5]).   Large deformation mapping is challenging not only because of the amount of deformation, but also because the "true" solution is difficult to find.  Keeping this in mind, we also increased the "span" (radius) of the correlation window in the similarity metric (which also increases computation time). These modified parameters succeeded: 
 \begin{verbatim}
-ANTS 3 -m PR[template.nii.gz,subject.nii.gz,1,4] -i 100x100x100x20
+ANTS 3 -m CC[template.nii.gz,subject.nii.gz,1,4] -i 100x100x100x20
  -o subjectmap.nii.gz -t SyN[0.25] -r Gauss[3,0] 
 \end{verbatim}
 Key changes were to increase the radius of the correlation and to
@@ -835,23 +980,26 @@ This two coarsets levels of the computation take only about
 but accounts for the large majority of the shape variation.  Note that
 this is a 3D example -- that is why the eyes appear only in the frame
 at left. 
+
 \newpage
 \section{Image Segmentation and Labeling}
 ANTS has tools for both tissue based segmentation and prior-based segmentation that 
 leverages spatial priors, usually based on a template mapping.  
 \subsection{Basic Segmentation}
 An advanced MRF segmentation algorithm is available in ANTS via the
-\verb Atropos tool, which is still under development.  We apply 
+\verb Atropos ~tool, which is still under development.  We apply 
 the segmentation to the example data in: ANTS/Examples/Data/r16slice.nii.  
 \begin{verbatim}
   ThresholdImage 2 r16slice.nii mask.nii.gz 0.001 Inf
   Atropos -d 2 -a r16slice.nii -o [r16slice_seg.nii.gz,r16slice_prob_%02d.nii.gz] \
-      -c [10,0.001] -m [0.05,1] -i kmeans[3] -x mask.nii.gz
+      -c [10,0.001] -m [0.1,1x1x1] -i kmeans[3] -x mask.nii.gz
 \end{verbatim}
 The parameter \verb kmeans[3] ~indicates 3 tissues plus background are sought.  The \verb [0.05,1] ~indicates 
 that some MRF smoothing will be applied to the labels.  Other
 options are defined in the Atropos help.  Output is shown 
 in figure~\ref{fig:seg} and -- with priors -- in figure~\ref{fig:seg2}.
+The document atropos.pdf in the Documentation directory provides much
+more explanation.
 \begin{figure}
 \includegraphics[width=1\textwidth]{Figures/segmentation.pdf} 
 \itkcaption[ANTS Segmentation]{ANTS provides basic 
@@ -882,10 +1030,9 @@ and the different imaging signature that different tissues provide.   Prior imag
 of the same size and dimension as the input data and should have intensities in the range $[0,1]$.
 \begin{figure}
 \includegraphics[width=1\textwidth]{Figures/segmentation2.pdf}
-\itkcaption[ANTS Segmentation]{ANTS extends basic Markov Random Field
-  regularized Gaussian model tissue segmentation to include priors,
+\itkcaption[ANTS Segmentation]{The ANTs program {\em Atropos} extends basic Markov Random Field regularized Gaussian model tissue segmentation to include priors,
   which allow spatially varying tissue models to determine
-  segmentation.  The ANTS program N3BiasFieldCorrection is less
+  segmentation.  The ANTS program N4BiasFieldCorrection is 
   critical as preprocessing when using this approach to segmentation.
   Here, we see the improvement in segmentation as the locally varying 
   prior models are weighted more heavily.  
@@ -1004,8 +1151,8 @@ All of these studies benefit in some way from normalization whether the topic is
 thickness, Jacobian-based morphometry, volumetric morphometry or functional studies. 
 From a broad perspective, each of these applications requires the same steps:
 \begin{enumerate}
-\item Preprocess images -- bias correction (e.g. via the \verb
-  N4BiasFieldCorrection program), segmentation (via \verb Atropos ), etc.  Potentially construct an optimal template. 
+\item Preprocess images -- bias correction (e.g. via the \verb N4BiasFieldCorrection ~program), 
+segmentation (via \verb Atropos ), etc.  Potentially construct an optimal template. 
 \item Normalize images -- run \verb ants.sh ~ to map a population of images to a template and store the deformations. 
 \item Derive any data from the deformation that may be necessary,
   e.g. the log-Jacobian, via ANTSJacobian.
