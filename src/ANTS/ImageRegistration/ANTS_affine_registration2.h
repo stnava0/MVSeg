@@ -153,7 +153,7 @@ void WriteAffineTransformFile(TransformPointerType &transform, StringType filena
     transform_writer->Update();
   }
   catch( itk::ExceptionObject &err){
-    std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl
+    std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << err << std::endl
         <<"Exception in writing tranform file: " << std::endl
         << filename << std::endl;
     return;
@@ -575,7 +575,7 @@ double TestCostValueMMI(ImagePointerType fixedImage, ImagePointerType movingImag
     rval = mattesMutualInfo->GetValue(para);
   }
   catch (itk::ExceptionObject &err){
-    std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl
+    std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << err << std::endl
         << "Exception caught in computing mattesMutualInfo after registration" << std::endl
         << "Maybe: Too many samples map outside moving image buffer" << std::endl
         << "Set the cost value = 0 (max for MutualInfo) " << std::endl;
