@@ -119,7 +119,7 @@ int ConvertScalarImageToRGB( int argc, char *argv[] )
     typedef itk::Function::JetColormapFunction<typename RealImageType::PixelType,
       typename RGBImageType::PixelType> ColormapType;
     typename ColormapType::Pointer colormap = ColormapType::New();
-    rgbfilter->SetColormap( colormap );
+//    rgbfilter->SetColormap( colormap );
     }
   else if ( colormapString == "hsv"  )
     {
@@ -127,7 +127,7 @@ int ConvertScalarImageToRGB( int argc, char *argv[] )
     typedef itk::Function::HSVColormapFunction<typename RealImageType::PixelType,
       typename RGBImageType::PixelType> ColormapType;
     typename ColormapType::Pointer colormap = ColormapType::New();
-    rgbfilter->SetColormap( colormap );
+//    rgbfilter->SetColormap( colormap );
     }
   else if ( colormapString == "overunder"  )
     {
@@ -179,7 +179,7 @@ int ConvertScalarImageToRGB( int argc, char *argv[] )
       }
     colormap->SetBlueChannel( channel );
     }
-    rgbfilter->SetColormap( colormap );
+//    rgbfilter->SetColormap( colormap );
     }
 
   if( maskImage )
